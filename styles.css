@@ -147,7 +147,7 @@ ul.menu {
       margin-bottom: 30px;
   }
 
-  .announcement-text{
+  .list-text{
       text-align: left;
       border-bottom: 1px solid;
       font-size:1vw;
@@ -177,6 +177,7 @@ section{
 textarea{
     width: 75%;
 }
+
 
 /* ---- responsive ---------*/
 @media only screen and (min-width: 600px) {
