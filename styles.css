@@ -69,9 +69,6 @@ ul.menu {
     color: rgb(21, 117, 155);
   }
 
-
-  /*---- Test page -----*/
-
 .flex-parent-element {
     display: flex;
     width: 100%;
@@ -124,6 +121,7 @@ ul.menu {
       font-size: x-large;
       margin-bottom: 20px;
       margin-top: 10px;
+      color: rgb(21, 117, 155);
   }
 
   .text-input{
