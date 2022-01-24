@@ -7,7 +7,7 @@ body {
     overflow-y: visible;
     scroll-behavior: smooth;
     overflow-x: hidden;
-    background-color: rgb(177, 152, 149);
+    background-color: rgb(231, 207, 205);
 }
 
 * {
@@ -99,6 +99,7 @@ ul.menu {
   .text-div{
       flex-grow: 1;
       margin-top: 10px;
+      margin-bottom: 10px;
   }
 
   .image{
@@ -106,4 +107,14 @@ ul.menu {
       width: 100px;
       margin-left: 40%;
       margin-top: 10px;
+  }
+
+  .heading2{
+      color: rgb(10, 94, 10);
+  }
+
+  .contact-form{
+      margin-left: 50px;
+      margin-top: 10px;
+      margin-bottom: 20px;
   }
