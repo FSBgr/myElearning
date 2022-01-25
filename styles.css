@@ -20,11 +20,11 @@ body {
     margin: 0;
 }
 
-.page-container{
+.page-container {
     border-right: 2px solid;
     position: relative;
-    width:800px;
-    height:auto;
+    width: 800px;
+    height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
@@ -43,7 +43,7 @@ ul.menu {
     color: black;
 }
 
-.page{
+.page {
     border: 2px solid;
     margin: auto;
     width: 60%;
@@ -51,7 +51,7 @@ ul.menu {
     margin-top: 10px;
 }
 
-.title-container{
+.title-container {
     align-self: center;
     text-align: center;
     border-bottom: 1px solid;
@@ -59,7 +59,7 @@ ul.menu {
     text-align: center;
 }
 
-.list-component{
+.list-component {
     font-weight: bold;
     margin-bottom: 25px;
     color: rgb(21, 117, 155);
@@ -75,148 +75,226 @@ ul.menu {
     cursor: pointer;
     font-weight: bold;
     color: rgb(21, 117, 155);
-  }
+}
 
 .flex-parent-element {
     display: flex;
     width: 100%;
-  }
-  
-  .flex-child-element{
-    /*flex: 0.5;*/
+}
+
+.flex-child-element {
     margin-top: 5px;
     width: 800px;
-  }
-  .subflex{
+}
+
+.subflex {
     border-right: 1px solid;
-  }
-  .first{
-      flex: 0.25;
-  }
-  .second{
-      flex: 0.75;
-  }
-  
-  .flex-child-element:first-child {
+}
+
+.first {
+    flex: 0.25;
+}
+
+.second {
+    flex: 0.75;
+}
+
+.flex-child-element:first-child {
     margin-right: 20px;
-  }
+}
 
-  .text-div{
-      flex-grow: 1;
-      margin-top: 10px;
-      margin-bottom: 10px;
-  }
+.text-div {
+    flex-grow: 1;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 1vw;
+}
 
-  .image{
-      height: 100px;
-      width: 100px;
-      margin-left: 40%;
-      margin-top: 10px;
-  }
+.image {
+    height: 100px;
+    width: 100px;
+    margin-left: 40%;
+    margin-top: 10px;
+}
 
-  .heading2{
-      color: rgb(10, 94, 10);
-      font-size: 1vw;
-  }
+.heading2 {
+    color: rgb(10, 94, 10);
+    font-size: 1vw;
+}
 
-  .contact-form{
-      margin-left: 50px;
-      margin-right: 20px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      width: 100%;
-  }
-  
-  .form-label{
-      font-weight: bold;
-      font-size: x-large;
-      margin-bottom: 20px;
-      margin-top: 10px;
-      color: rgb(21, 117, 155);
-  }
+.contact-form {
+    margin-left: 50px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
 
-  .text-input{
-      height: auto;
-      width: 200px;
-      margin-top: 10px;
-  }
+.form-label {
+    font-weight: bold;
+    font-size: x-large;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: rgb(21, 117, 155);
+}
 
-  .announcement-container{
-      /*width: 800px;*/
-      width: 100%;
-      height: auto;
-      margin-bottom: 30px;
-  }
+.text-input {
+    height: auto;
+    width: 200px;
+    margin-top: 10px;
+}
 
-  .list-text{
-      text-align: left;
-      font-size:1vw;
-      flex-grow: 1;
-      margin-right:12px;
-  }
-  .withborder{
+.announcement-container {
+    /*width: 800px;*/
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+
+.list-text {
+    text-align: left;
+    font-size: 1vw;
+    flex-grow: 1;
+    margin-right: 12px;
+}
+
+.withborder {
     border-bottom: 1px solid;
-  }
+}
 
-.announcement-subtitle{
-    font-size:1vw;
+.announcement-subtitle {
+    font-size: 1vw;
     flex-grow: 1;
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
-li{
+li {
     text-align: -webkit-match-parent;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
-section{
+section {
     display: block;
 }
 
-textarea{
+textarea {
     width: 75%;
 }
 
-.project-goal{
+.project-goal {
     margin-left: 40px;
+    font-size: 1vw;
 }
 
-.redText 
-{ 
-    color: red; 
-} 
+.redText {
+    color: red;
+}
+
 /* ---- responsive ---------*/
 @media only screen and (min-width: 600px) {
+
     /* For tablets: */
-    .col-s-1 {width: 8.33%;}
-    .col-s-2 {width: 16.66%;}
-    .col-s-3 {width: 25%;}
-    .col-s-4 {width: 33.33%;}
-    .col-s-5 {width: 41.66%;}
-    .col-s-6 {width: 50%;}
-    .col-s-7 {width: 58.33%;}
-    .col-s-8 {width: 66.66%;}
-    .col-s-9 {width: 75%;}
-    .col-s-10 {width: 83.33%;}
-    .col-s-11 {width: 91.66%;}
-    .col-s-12 {width: 100%;}
-  }
-  @media only screen and (min-width: 768px) {
+    .col-s-1 {
+        width: 8.33%;
+    }
+
+    .col-s-2 {
+        width: 16.66%;
+    }
+
+    .col-s-3 {
+        width: 25%;
+    }
+
+    .col-s-4 {
+        width: 33.33%;
+    }
+
+    .col-s-5 {
+        width: 41.66%;
+    }
+
+    .col-s-6 {
+        width: 50%;
+    }
+
+    .col-s-7 {
+        width: 58.33%;
+    }
+
+    .col-s-8 {
+        width: 66.66%;
+    }
+
+    .col-s-9 {
+        width: 75%;
+    }
+
+    .col-s-10 {
+        width: 83.33%;
+    }
+
+    .col-s-11 {
+        width: 91.66%;
+    }
+
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
     /* For desktop: */
-    .col-1 {width: 8.33%;}
-    .col-2 {width: 16.66%;}
-    .col-3 {width: 25%;}
-    .col-4 {width: 33.33%;}
-    .col-5 {width: 41.66%;}
-    .col-6 {width: 50%;}
-    .col-7 {width: 58.33%;}
-    .col-8 {width: 66.66%;}
-    .col-9 {width: 75%;}
-    .col-10 {width: 83.33%;}
-    .col-11 {width: 91.66%;}
-    .col-12 {width: 100%;}
-  }
+    .col-1 {
+        width: 8.33%;
+    }
+
+    .col-2 {
+        width: 16.66%;
+    }
+
+    .col-3 {
+        width: 25%;
+    }
+
+    .col-4 {
+        width: 33.33%;
+    }
+
+    .col-5 {
+        width: 41.66%;
+    }
+
+    .col-6 {
+        width: 50%;
+    }
+
+    .col-7 {
+        width: 58.33%;
+    }
+
+    .col-8 {
+        width: 66.66%;
+    }
+
+    .col-9 {
+        width: 75%;
+    }
+
+    .col-10 {
+        width: 83.33%;
+    }
+
+    .col-11 {
+        width: 91.66%;
+    }
+
+    .col-12 {
+        width: 100%;
+    }
+}
