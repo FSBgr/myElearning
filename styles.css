@@ -23,7 +23,7 @@ body {
 .page-container {
     border-right: 2px solid;
     position: relative;
-    width: 800px;
+    width: 100%;
     height: auto;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -71,10 +71,11 @@ ul.menu {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 1vw;
     cursor: pointer;
     font-weight: bold;
     color: rgb(21, 117, 155);
+    width: 100%;
 }
 
 .flex-parent-element {
@@ -84,7 +85,7 @@ ul.menu {
 
 .flex-child-element {
     margin-top: 5px;
-    width: 800px;
+    width: 100%;
 }
 
 .subflex {
@@ -104,7 +105,7 @@ ul.menu {
 }
 
 .text-div {
-    flex-grow: 1;
+    /*flex-grow: 1;*/
     margin-top: 10px;
     margin-bottom: 10px;
     font-size: 1vw;
@@ -124,7 +125,7 @@ ul.menu {
 
 .contact-form {
     margin-left: 50px;
-    margin-right: 20px;
+    /*margin-right: 20px;*/
     margin-top: 10px;
     margin-bottom: 20px;
     width: 100%;
@@ -132,15 +133,15 @@ ul.menu {
 
 .form-label {
     font-weight: bold;
-    font-size: x-large;
+    font-size: 1vw;
     margin-bottom: 20px;
     margin-top: 10px;
     color: rgb(21, 117, 155);
 }
 
 .text-input {
-    height: auto;
-    width: 200px;
+    height: 25px;
+    width: 50%;
     margin-top: 10px;
 }
 
@@ -192,6 +193,23 @@ textarea {
 
 .redText {
     color: red;
+}
+
+.send-button {
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    cursor: pointer;
+    font-weight: bold;
+    color: rgb(21, 117, 155);
+    width: 25%;
+}
+
+.inside-form{
+    margin-left: 50px;
 }
 
 /* ---- responsive ---------*/
