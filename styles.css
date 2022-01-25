@@ -116,6 +116,7 @@ ul.menu {
 
   .heading2{
       color: rgb(10, 94, 10);
+      font-size: 1vw;
   }
 
   .contact-form{
@@ -149,10 +150,12 @@ ul.menu {
 
   .list-text{
       text-align: left;
-      border-bottom: 1px solid;
       font-size:1vw;
       flex-grow: 1;
       margin-right:12px;
+  }
+  .withborder{
+    border-bottom: 1px solid;
   }
 
 .announcement-subtitle{
@@ -178,7 +181,14 @@ textarea{
     width: 75%;
 }
 
+.project-goal{
+    margin-left: 40px;
+}
 
+.redText 
+{ 
+    color: red; 
+} 
 /* ---- responsive ---------*/
 @media only screen and (min-width: 600px) {
     /* For tablets: */
