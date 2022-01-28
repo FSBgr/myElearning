@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2022 at 03:35 PM
+-- Generation Time: Jan 28, 2022 at 04:23 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -98,6 +98,26 @@ INSERT INTO `email` (`id`, `sender`, `subject`, `text`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `emailaddresses`
+--
+
+CREATE TABLE `emailaddresses` (
+  `id` int(11) NOT NULL,
+  `address` mediumtext DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `emailaddresses`
+--
+
+INSERT INTO `emailaddresses` (`id`, `address`) VALUES
+(1, 'tutor@csd.auth.gr'),
+(2, 'myemail@example.com'),
+(3, 'examplemail@examplemail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `goal`
 --
 
@@ -146,6 +166,12 @@ ALTER TABLE `email`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `emailaddresses`
+--
+ALTER TABLE `emailaddresses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `goal`
 --
 ALTER TABLE `goal`
@@ -178,6 +204,12 @@ ALTER TABLE `document`
 --
 ALTER TABLE `email`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `emailaddresses`
+--
+ALTER TABLE `emailaddresses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `goal`

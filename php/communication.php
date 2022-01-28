@@ -1,4 +1,42 @@
 <!DOCTYPE html>
+
+<?php
+session_start();
+$username = "Guest";
+$email = "";
+$pwd = "";
+$newPwd = "";
+$password_repeat = "";
+$_SESSION['success'] = '';
+$contactName = "";
+$contactEmail = "";
+$contactText = "";
+$errors = array();
+$_SESSION['age'] = "Age";
+$_SESSION['gender'] = "Gender";
+$_SESSION['lctn'] = "Location";
+
+//connecting to db
+$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+
+$sql = "SELECT * from emailaddresses";
+if ($result = mysqli_query($db, $sql)) {
+    $rowcount = mysqli_num_rows($result);
+}
+
+function printAddresses($rowcount, $db){
+    if($rowcount!=0){
+        for($i=1; $i<=$rowcount; $i++){
+            $query = "SELECT address FROM emailaddresses WHERE id='$i'";
+            $result = mysqli_query($db, $query);
+            $address = implode(mysqli_fetch_row($result));
+            echo " <a href=\"mailto: $address\">$address</a> <br>";
+        }
+    }else{
+        echo "<a href=\"mailto: tutor@csd.auth.gr\">tutor@csd.auth.gr</a> <br>";
+    }
+}
+?>
 <html>
 
 <head>
@@ -44,8 +82,10 @@
                 <h2 class="heading2">Αποστολή e-mail με χρήση e-mail διεύθυνσης</h2>
                 <div class="inside-form">
                     <p class="text-div">
-                        Εναλλακτικά μπορείτε να αποστείλετε e-mail στην παρακάτω διεύθυνση ηλεκτρονικού ταχυδρομείου <a
-                            href="mailto: tutor@csd.auth.test.gr">tutor@csd.auth.test.gr</a>
+                        Εναλλακτικά μπορείτε να αποστείλετε e-mail στις παρακάτω διευθύνσεις ηλεκτρονικού ταχυδρομείου: <br>
+                        <?php 
+                            printAddresses($rowcount, $db);
+                            ?>
                     </p>
                 </div>
             </div>
