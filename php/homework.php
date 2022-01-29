@@ -75,7 +75,7 @@
     </div>
 
     <footer>
-        <a href="./homework.html" class="button">Back to top</a>
+        <a href="./homework.php" class="button">Back to top</a>
     </footer>
 
 

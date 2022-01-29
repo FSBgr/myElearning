@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2022 at 04:23 PM
+-- Generation Time: Jan 29, 2022 at 01:20 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -73,7 +73,9 @@ CREATE TABLE `document` (
 --
 
 INSERT INTO `document` (`id`, `title`, `description`, `source`) VALUES
-(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html');
+(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html'),
+(2, 'OLA MPOMPA', 'Το έγγραφο αυτό αποτελεί τεκμήριο της διδακτικής διαδικασίας ως ένα από τα σημαντικότερα εγχειρίδια με τα οποία έχουν δουλέψει κορυφάιοι εκπαιδευτικοί ανά τον κόσμο και αποτελούν αναπόσπαστο κομμάτι κάθε διακεκριμένου πανεπιστημίου σε όλη την υφήλιο. Μπορείτε να προχωρήσετε στην ανάγνωσή του πατώντας τον παρακάτω σύνδεσμο.', 'https://google.com'),
+(3, 'McBeth', 'Old McDonald Had a farm e i ei o', 'https://researchgate.com');
 
 -- --------------------------------------------------------
 
@@ -93,7 +95,13 @@ CREATE TABLE `email` (
 --
 
 INSERT INTO `email` (`id`, `sender`, `subject`, `text`) VALUES
-(1, 'tutor@csd.auth.gr', 'New assignment - Send today!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum tristique diam, a rhoncus felis accumsan at. Ut est justo, molestie eget malesuada et, vulputate id lacus. Quisque gravida pulvinar velit. Aliquam erat volutpat. Suspendisse a aliquam turpis. Mauris auctor elit augue, blandit bibendum neque bibendum sed. Vestibulum et ex ut nisl consectetur faucibus. Integer varius erat ante. Nunc magna est, auctor vitae magna sed, feugiat facilisis nulla. Duis quis volutpat felis, ut viverra nulla. Duis euismod lorem a ex congue iaculis. Fusce quis cursus justo, sed convallis nisl. Aenean quis fringilla nibh.');
+(1, 'tutor@csd.auth.gr', 'New assignment - Send today!', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum tristique diam, a rhoncus felis accumsan at. Ut est justo, molestie eget malesuada et, vulputate id lacus. Quisque gravida pulvinar velit. Aliquam erat volutpat. Suspendisse a aliquam turpis. Mauris auctor elit augue, blandit bibendum neque bibendum sed. Vestibulum et ex ut nisl consectetur faucibus. Integer varius erat ante. Nunc magna est, auctor vitae magna sed, feugiat facilisis nulla. Duis quis volutpat felis, ut viverra nulla. Duis euismod lorem a ex congue iaculis. Fusce quis cursus justo, sed convallis nisl. Aenean quis fringilla nibh.'),
+(2, '', '', ''),
+(3, 'tefas@tefas.tefas', 'Εργασία OWL - 3350 - 3362', 'aaaaaaaaa'),
+(4, 'tefas@tefas.tefas', 'asoee', 'aaaaaaaaaaaaaaaaa'),
+(5, 'pipip@pup.pop', 'asoee', 'aaaaaaaaaaaaaaaaa'),
+(6, 'omagad@csd.auth.gr', 'Προφορική εξέταση στο μάθημα Νευρωνικά Δίκτυα', 'Προφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά Δίκτυα'),
+(7, 'omagad@csd.auth.gr', 'Προφορική εξέταση στο μάθημα Νευρωνικά Δίκτυα', 'Προφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά ΔίκτυαΠροφορική εξέταση στο μάθημα Νευρωνικά Δίκτυα');
 
 -- --------------------------------------------------------
 
@@ -197,13 +205,13 @@ ALTER TABLE `assignment`
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `email`
 --
 ALTER TABLE `email`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `emailaddresses`

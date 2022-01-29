@@ -42,7 +42,7 @@
     </div>
 
     <footer>
-        <a href="./index.html" class="button">Back to top</a>
+        <a href="./index.php" class="button">Back to top</a>
     </footer>
 
 

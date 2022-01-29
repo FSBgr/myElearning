@@ -1,5 +1,43 @@
 <!DOCTYPE html>
 <html>
+<?php
+
+session_start();
+
+//connecting to db
+$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+
+$sql = "SELECT * from document";
+if ($result = mysqli_query($db, $sql)) {
+    $rowcount = mysqli_num_rows($result);
+}
+
+//function printDoc($db, $rowcount){
+
+//}
+
+function printDoc($db, $rowcount)
+{
+    if ($rowcount != 0) {
+        for ($i = 1; $i <= $rowcount; $i++) {
+            echo "<li class=\"announcement-container\"> <h2 class=\"heading2\"> ";
+            $query = "SELECT title FROM document WHERE id='$i'";
+            $result = mysqli_query($db, $query);
+            $title = implode(mysqli_fetch_row($result));
+            echo " $title </h2> <br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
+            $query = "SELECT description FROM document WHERE id='$i'";
+            $result = mysqli_query($db, $query);
+            $description = implode(mysqli_fetch_row($result));
+            $query = "SELECT source FROM document WHERE id='$i'";
+            $result = mysqli_query($db, $query);
+            $source = implode(mysqli_fetch_row($result));
+            echo " $description <br> <a href=\"$source\" class=\"button\">Download</a><br></p></li>";
+        }
+    }else{
+        echo " NO AVAILABLE DOCUMENTS";
+    }
+}
+?>
 
 <head>
     <meta charset="UTF-8">
@@ -28,30 +66,7 @@
             </div>
             <div class="flex-child-element second text-div">
                 <ul>
-                    <li class="announcement-container">
-                        <h2 class="heading2"> Τίτλος Εγγράφου 1</h2> <br>
-                        <p class="list-text withborder"> <em><b>Περιγραφή: </b></em> Το έγγραφο αυτό αποτελεί τεκμήριο
-                            της διδακτικής διαδικασίας ως ένα από
-                            τα σημαντικότερα εγχειρίδια με τα οποία
-                            έχουν δουλέψει κορυφάιοι εκπαιδευτικοί ανά τον κόσμο και αποτελούν αναπόσπαστο κομμάτι κάθε
-                            διακεκριμένου πανεπιστημίου
-                            σε όλη την υφήλιο. Μπορείτε να προχωρήσετε στην ανάγνωσή του πατώντας τον παρακάτω
-                            σύνδεσμο.<br>
-                            <a href="" class="button">Download</a><br>
-                        </p>
-                    </li>
-                    <li class="announcement-container">
-                        <h2 class="heading2"> Τίτλος Εγγράφου 2</h2> <br>
-                        <p class="list-text withborder"> <em><b>Περιγραφή: </b> </em> Το έγγραφο αυτό αποτελεί τεκμήριο
-                            της διδακτικής διαδικασίας ως ένα από
-                            τα σημαντικότερα εγχειρίδια με τα οποία
-                            έχουν δουλέψει κορυφάιοι εκπαιδευτικοί ανά τον κόσμο και αποτελούν αναπόσπαστο κομμάτι κάθε
-                            διακεκριμένου πανεπιστημίου
-                            σε όλη την υφήλιο. Μπορείτε να προχωρήσετε στην ανάγνωσή του πατώντας τον παρακάτω
-                            σύνδεσμο.<br>
-                            <a href="" class="button">Download</a><br>
-                        </p>
-                    </li>
+                    <?php printDoc($db, $rowcount) ?>
                 </ul>
 
             </div>
@@ -59,7 +74,7 @@
     </div>
 
     <footer>
-        <a href="./documents.html" class="button">Back to top</a>
+        <a href="./documents.php" class="button">Back to top</a>
     </footer>
 
 

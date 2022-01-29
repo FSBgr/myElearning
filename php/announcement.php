@@ -1,19 +1,6 @@
 <!DOCTYPE html>
 <?php
 session_start();
-$username = "Guest";
-$email = "";
-$pwd = "";
-$newPwd = "";
-$password_repeat = "";
-$_SESSION['success'] = '';
-$contactName = "";
-$contactEmail = "";
-$contactText = "";
-$errors = array();
-$_SESSION['age'] = "Age";
-$_SESSION['gender'] = "Gender";
-$_SESSION['lctn'] = "Location";
 
 //connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
@@ -100,7 +87,7 @@ function printAnn($rowcount, $db)
     </div>
 
     <footer>
-        <a href="./announcement.html" class="button">Back to top</a>
+        <a href="./announcement.php" class="button">Back to top</a>
     </footer>
 
 

@@ -45,8 +45,6 @@ if (isset($_POST['submit'])) {
     }
 }
 
-
-
 ?>
 <html>
 
@@ -105,7 +103,7 @@ if (isset($_POST['submit'])) {
     </div>
 
     <footer>
-        <a href="./communication.html" class="button">Back to top</a>
+        <a href="./communication.php" class="button">Back to top</a>
     </footer>
 
 
