@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<?php 
+session_start();
+$_SESSION['logged'] = "unknown";
+
+//connecting to db
+$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+
+/*if(strcmp(!$_SESSION['logged'], "unknown")){
+    header('Location: ./login.php');
+} elseif (strcmp(!$_SESSION['logged'], "tutor")){
+    header('Location: ./index.php?tutor');
+} else{
+    header('Location: ./index.php?student');
+}*/
+?>
+
 <html>
 
 <head>
@@ -26,6 +42,7 @@
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
+                    <li> <a href="./login.php?login=true" class="button">login/logout</a></li>
                 </ul>
             </div>
             <div class="flex-child-element second text-div">
