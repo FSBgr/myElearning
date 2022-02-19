@@ -14,6 +14,10 @@ if(isset($_POST['addann'])){
     header('location: announcement.php');
 
 }
+$editId = $_GET['id'];
+$editDate = $_GET['date'];
+$editSubject = $_GET['subject'];
+$editDate = $_GET['subject'];
 ?>
 
 <html>

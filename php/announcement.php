@@ -43,49 +43,29 @@ if ($result = mysqli_query($db, $sql)) {
                     <?php
                     $query = "SELECT * FROM announcement";
                     $results = mysqli_query($db, $query);
-                    $rowcount = mysqli_num_rows($results);
-                    $query = "SELECT id FROM announcement ORDER BY id DESC LIMIT 1";
-                    $result = mysqli_query($db, $query);
-                    $limit = implode(mysqli_fetch_row($result));
-                    if ($rowcount != 0) {
-                        for ($i = 1; $i <= $limit; $i++) {
-                            $query = "SELECT id FROM announcement WHERE id='$i'";
-                            $result = mysqli_query($db, $query);
-                            if (!mysqli_num_rows($result)) {
-                                continue;
-                            }
-                            $id = implode(mysqli_fetch_row($result));
-                            $query = "SELECT date FROM announcement WHERE id='$i'";
-                            $result = mysqli_query($db, $query);
-                            $date = implode(mysqli_fetch_row($result));
-                            $query = "SELECT subject FROM announcement WHERE id='$i'";
-                            $result = mysqli_query($db, $query);
-                            $subject = implode(mysqli_fetch_row($result));
-                            $query = "SELECT text FROM announcement WHERE id='$i'";
-                            $result = mysqli_query($db, $query);
-                            $text = implode(mysqli_fetch_row($result));
-                            echo "<li class=\"announcement-container\">
+                    while ($row = mysqli_fetch_array($results)) {
+                        $id = $row['id'];
+                        $date = $row['date'];
+                        $subject = $row['subject'];
+                        $text = $row['text'];
+                        echo "<li class=\"announcement-container\">
                         <section>
                             <h2 class=\"heading2\">Ανακοίνωση";
-                            echo " $id </h2>";
+                        echo " $id </h2>";
 
-                            if ($_SESSION['role']) {
-                                echo "<form class=\"contact-form\" method=\"post\"> 
-                                <button class=\"send-button\" type=\"delete\" id=\"$id\" required name=\"delete\">Delete</button>
-                                <button class=\"send-button\" type=\"edit\" id=\"$id\" required name=\"edit\">Edit</button>
-                            </form><br>";
-                            }
-                            echo "<p class=\"announcement-subtitle\"> <b>Ημερομηνία:</b>";
-                            echo " <em> $date </em> </p> \n";
-                            echo "<p class=\"announcement-subtitle\"> <b>Θέμα:</b> ";
-                            echo " $subject</p> \n";
-                            echo "<p class=\"list-text withborder\"> ";
-                            echo " $text</p> \n";
-
-                            echo " </section> </li>";
+                        if ($_SESSION['role']) {
+                            $del = 'deleteannouncement.php?id='.$row['id'];
+                            echo "<br> <a href= $del> Διαγραφή </a>";
+                            $del = 'addannouncement.php?type=edit&id='.$row['id'].'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
+                            echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                         }
-                    } else {
-                        echo "NO AVAILABLE ANNOUNCEMENTS";
+                        echo "<p class=\"announcement-subtitle\"> <b>Ημερομηνία:</b>";
+                        echo " <em> $date </em> </p> \n";
+                        echo "<p class=\"announcement-subtitle\"> <b>Θέμα:</b> ";
+                        echo " $subject</p> \n";
+                        echo "<p class=\"list-text withborder\"> ";
+                        echo " $text</p> \n";
+                        echo " </section> </li>";
                     }
                     ?>
                 </ul>
