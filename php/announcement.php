@@ -28,6 +28,10 @@ if ($result = mysqli_query($db, $sql)) {
 <body>
     <div class="page">
         <h1 class="title-container">Ανακοινώσεις</h1>
+        <?php if ($_SESSION['role']) {
+            echo "<a href=\"addannouncement.php\" class=\"button\">Προσθήκη Νέας Ανακοίνωσης</a><br></p></li>";
+        }
+        ?>
         <div class="flex-parent-element">
             <div class="flex-child-element subflex first">
                 <ul class="menu">
