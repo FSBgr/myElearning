@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php 
 session_start();
-$_SESSION['logged'] = "unknown";
 
+if(!isset($_SESSION['username'])){
+    header('Location: ./login.php');
+}
+//echo isset($_SESSION['username']);
 //connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
 

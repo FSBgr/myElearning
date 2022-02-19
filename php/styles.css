@@ -147,7 +147,7 @@ ul.menu {
 
 .announcement-container {
     /*width: 800px;*/
-    width: 100%;
+    width: auto;
     height: auto;
     margin-bottom: 30px;
 }
