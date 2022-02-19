@@ -80,11 +80,10 @@ if (isset($_POST['editann'])) {
 
                 ?>><br><br>
                 <label class="form-label"> Περιεχόμενα</label><br>
-                <input class="text-input" type="textarea" size="100" rows="100" cols="50" required name="text" id="text" <?php if(isset($type) && strcmp($type, $edit) == 0){
-                    echo "value=\"$editText\"";
-                }
+                <textarea class="text-input" size="100" rows="100" cols="100" type="text" required name="text" id="text" <?php if(isset($type) && strcmp($type, $edit) == 0){
+                    echo "value=\"$editText\"";}else{echo "value=\"\"";}?>></textarea>
 
-                ?>><br><br>
+                <br><br>
                 <?php
                 if (isset($type) && strcmp($type, $edit) == 0) {
                     echo "<button class=\"send-button\" type=\"editann\" id=\"editann\" required name=\"editann\">Επεξεργασία ανακοίνωσης</button>";

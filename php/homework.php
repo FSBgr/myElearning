@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<?php session_start();
+$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+
+?>
 <html>
 
 <head>
@@ -26,52 +30,53 @@
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
                 </ul>
             </div>
-            <div class="flex-child-element second text-div withborder">
-                <ul class="withborder">
-                    <li class="announcement-container">
-                        <h2 class="heading2"> Εργασία 1</h2> <br>
-                        <p class="list-text"> <em><b>Στόχοι: </b></em></p> <br>
-                        <ol>
-                            <li class="project-goal">Εκπαίδευση Νευρωνικών Δικτύων </li> <br>
-                            <li class="project-goal">Εκμάθηση Python</li><br>
-                            <li class="project-goal">Ανάπτυξη Machine Learning Αλγορίθμων</li><br>
-                        </ol>
-                        <p class="list-text"> <em><b>Εκφώνηση:</b></em></p> <br>
-                        <p class="list-text project-goal"> Κατεβάστε την εκφώνηση από <a href="">εδώ</a></p> <br>
-                        <p class="list-text"> <em><b>Παραδοτέα:</b></em></p> <br>
-                        <ol>
-                            <li class="project-goal">Το αρχείο python</li> <br>
-                            <li class="project-goal">Γραπτή Αναφορά</li><br>
-                            <li class="project-goal">Screenshots με αποτελέσματα των προγραμμάτων</li><br>
-                        </ol>
-                        <p class="list-text"><span class="redText"> <em><b>Ημερομηνία Παράδοσης </b></em></span>
-                            23/02/2022</p>
-                    </li>
-                </ul>
-                <ul>
-                    <li class="announcement-container">
-                        <h2 class="heading2"> Εργασία 2</h2> <br>
-                        <p class="list-text"> <em><b>Στόχοι: </b></em></p> <br>
-                        <ol>
-                            <li class="project-goal">Εκμάθηση PHP </li> <br>
-                            <li class="project-goal">Εκμάθηση HTML</li><br>
-                            <li class="project-goal">Εκμάθηση CSS</li><br>
-                        </ol>
-                        <p class="list-text"> <em><b>Εκφώνηση:</b></em></p> <br>
-                        <p class="list-text project-goal"> Κατεβάστε την εκφώνηση από <a href="">εδώ</a></p> <br>
-                        <p class="list-text"> <em><b>Παραδοτέα:</b></em></p> <br>
-                        <ol>
-                            <li class="project-goal">Τα αρχεία HTML, PHP, CSS</li> <br>
-                            <li class="project-goal">Γραπτή Αναφορά</li><br>
-                            <li class="project-goal">Ανέβασμα της εργασίας στον ιστοχώρο <a
-                                    href="users.auth.gr">users.auth.gr</a></li><br>
-                        </ol>
-                        <p class="list-text"><span class="redText"> <em><b>Ημερομηνία Παράδοσης </b></em></span>
-                            05/03/2022</p>
-                    </li>
-                </ul>
-            </div>
+            <?php
+            echo "<div class=\"flex-child-element second text-div withborder\">";
+
+
+
+            $fetch_assignment_ids = "SELECT id FROM assignment";
+            $assignment_ids = mysqli_query($db, $fetch_assignment_ids);
+            while ($row = mysqli_fetch_row($assignment_ids)) {
+                echo "<ul class=\"withborder\" style=\"list-style: none\"> <li class=\"announcement-container\">
+                        <h2 class=\"heading2\"> Εργασία " . implode($row) . "</h2> <br>
+                        <p class=\"list-text\"> <em><b>Στόχοι: </b></em></p> <br>
+                        <ol>";
+                $getGoals = "SELECT DISTINCT goal.description FROM hasgoal INNER JOIN goal ON goal.id = hasgoal.goalId INNER JOIN assignment ON hasgoal.assignmentId = assignment.id WHERE assignmentId=" . implode($row);
+                $goals = mysqli_query($db, $getGoals);
+                while ($rr = mysqli_fetch_row($goals)) {
+                    echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
+                }
+                echo "</ol>";
+
+                $get_source = "SELECT source FROM assignment WHERE id=" . implode($row);
+
+                $source = implode(mysqli_fetch_row(mysqli_query($db, $get_source)));
+                echo "<p class=\"list-text\"> <em><b>Εκφώνηση:</b></em></p> <br>
+                        <p class=\"list-text project-goal\"> Κατεβάστε την εκφώνηση από <a href=\"$source\">εδώ</a></p> <br>";
+
+                echo "<li class=\"announcement-container\">
+                        <p class=\"list-text\"> <em><b>Παραδοτέα: </b></em></p> <br>
+                        <ol>";
+                $get_deliverables = "SELECT DISTINCT deliverable.description FROM hasdeliverable INNER JOIN deliverable ON deliverable.id = hasdeliverable.deliverableId INNER JOIN assignment ON hasdeliverable.assignmentId = assignment.id WHERE assignmentId=" . implode($row);
+                $deliverables = mysqli_query($db, $get_deliverables);
+                //echo mysqli_num_rows($goals);
+                while ($rr = mysqli_fetch_row($deliverables)) {
+                    //echo implode($rr)."<br>";
+                    echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
+                }
+                echo "</ol>";
+
+                $get_date = "SELECT expdate FROM assignment WHERE id=" . implode($row);
+                $date = mysqli_fetch_row(mysqli_query($db, $get_date));
+                echo "<p class=\"list-text\"><span class=\"redText\"> <em><b>Ημερομηνία Παράδοσης </b></em></span>" .
+                    implode($date) . "</p>
+                </li> </ul>";
+            }
+            ?>
+            </ul>
         </div>
+    </div>
     </div>
 
     <footer>

@@ -19,6 +19,9 @@ if ($result = mysqli_query($db, $sql)) {
 function printDoc($db, $rowcount)
 {
     if ($rowcount != 0) {
+        if($_SESSION['role']){
+            echo "<a href=\"adddocument.php\" class=\"button\">Προσθήκη Νέου Εγγράφου</a><br><br><br></p></li>";
+        }
         for ($i = 1; $i <= $rowcount; $i++) {
             echo "<li class=\"announcement-container\"> <h2 class=\"heading2\"> ";
             $query = "SELECT title FROM document WHERE id='$i'";

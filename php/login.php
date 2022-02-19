@@ -5,20 +5,24 @@ session_start();
 $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
 
 
-
 if (isset($_POST['submit'])) {
-        $username = mysqli_real_escape_string($db, $_POST['username']);
-        $pwd = mysqli_real_escape_string($db, $_POST['pwd']);
+    $username = mysqli_real_escape_string($db, $_POST['username']);
+    $pwd = mysqli_real_escape_string($db, $_POST['pwd']);
 
-        $query = "SELECT * FROM account WHERE loginame='$username' AND password='$pwd'";
-        $results = mysqli_query($db, $query);
+    $query = "SELECT * FROM account WHERE loginame='$username' AND password='$pwd'";
+    $results = mysqli_query($db, $query);
 
-        if (mysqli_num_rows($results)) {
-            $row = $results->fetch_assoc();
-            $_SESSION['username'] = $username;
-            $_SESSION['role'] = $row['isTutor'];
-            header('location: ./index.php?login=success');
-        }
+    if (mysqli_num_rows($results)) {
+        $row = $results->fetch_assoc();
+        $_SESSION['username'] = $username;
+        $_SESSION['role'] = $row['isTutor'];
+        header('location: ./index.php?login=success');
+    }
+}
+
+if (isset($_POST['logout'])) {
+    unset($_SESSION['username']);
+    unset($_SESSION['role']);
 }
 ?>
 <html>
@@ -51,6 +55,10 @@ if (isset($_POST['submit'])) {
                     <li> <a href="./login.php" class="button">Login</a></li>
                 </ul>
             </div>
+            <?php if (isset($_SESSION['username'])) {
+                echo "<form class=\"contact-form\" method=\"post\"><button class=\"send-button\" type=\"logout\" id=\"logout\" required name=\"logout\">Logout</button> </form><br>";
+            } ?>
+
             <form class="contact-form" method="post"> <label class="form-label"> Username:</label><br>
                 <input class="text-input" type="text" size="50" required name="username" id="username"><br><br>
                 <label class="form-label"> Password:</label><br>
