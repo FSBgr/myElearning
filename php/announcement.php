@@ -28,10 +28,7 @@ if ($result = mysqli_query($db, $sql)) {
 <body>
     <div class="page">
         <h1 class="title-container">Ανακοινώσεις</h1>
-        <?php if ($_SESSION['role']) {
-            echo "<a href=\"addannouncement.php\" class=\"button\">Προσθήκη Νέας Ανακοίνωσης</a><br></p></li>";
-        }
-        ?>
+        
         <div class="flex-parent-element">
             <div class="flex-child-element subflex first">
                 <ul class="menu">
@@ -43,9 +40,13 @@ if ($result = mysqli_query($db, $sql)) {
                 </ul>
             </div>
             <div class="flex-child-element second text-div">
+            <?php if ($_SESSION['role']) {
+            echo "<a href=\"addannouncement.php\" class=\"button\">Προσθήκη Νέας Ανακοίνωσης</a><br></p></li>";
+        }
+        ?>
                 <ul>
                     <?php
-                    $query = "SELECT * FROM announcement";
+                    $query = "SELECT * FROM announcement ORDER BY id DESC";
                     $results = mysqli_query($db, $query);
                     while ($row = mysqli_fetch_array($results)) {
                         $id = $row['id'];

@@ -31,11 +31,11 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                 </ul>
             </div>
             <?php
-            echo "<div class=\"flex-child-element second text-div withborder\">";
-
-
-
-            $fetch_assignment_ids = "SELECT id FROM assignment";
+            echo "<div class=\"flex-child-element second text-div withborder\">"; 
+            if($_SESSION['role']){
+                echo "<a href=\"addhomework.php\" class=\"button\">Προσθήκη Νέας Εργασίας</a><br></p></li>";
+            }
+            $fetch_assignment_ids = "SELECT id FROM assignment ORDER BY expdate DESC";
             $assignment_ids = mysqli_query($db, $fetch_assignment_ids);
             while ($row = mysqli_fetch_row($assignment_ids)) {
                 echo "<ul class=\"withborder\" style=\"list-style: none\"> <li class=\"announcement-container\">

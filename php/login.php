@@ -42,6 +42,7 @@ if (isset($_POST['logout'])) {
 
 <body>
 
+<?php if(isset($_SESSION['username'])){ ?>
     <div class="page">
         <h1 class="title-container">Log-in</h1>
         <div class="flex-parent-element">
@@ -55,6 +56,7 @@ if (isset($_POST['logout'])) {
                     <li> <a href="./login.php" class="button">Login</a></li>
                 </ul>
             </div>
+            <?php } ?>
             <?php if (isset($_SESSION['username'])) {
                 echo "<form class=\"contact-form\" method=\"post\"><button class=\"send-button\" type=\"logout\" id=\"logout\" required name=\"logout\">Logout</button> </form><br>";
             } ?>
