@@ -57,23 +57,22 @@ if (isset($_POST['logout'])) {
                 </ul>
             </div>
             <?php } ?>
-            <?php if (isset($_SESSION['username'])) {
-                echo "<form class=\"contact-form\" method=\"post\"><button class=\"send-button\" type=\"logout\" id=\"logout\" required name=\"logout\">Logout</button> </form><br>";
-            } ?>
+            
+            
+                <?php if (isset($_SESSION['username'])) {
+                    echo "<form class=\"contact-form\" method=\"post\">
+                    <button class=\"send-button\" type=\"logout\" id=\"logout\" required name=\"logout\">Logout</button><br> </form><br>";
+                } else{
+                    echo "<form class=\"contact-form\" method=\"post\"> <label class=\"form-label\"> Username:</label><br>
+                    <input class=\"text-input\" type=\"text\" size=\"50\" required name=\"username\" id=\"username\"><br><br>
+                    <label class=\"form-label\"> Password:</label><br>
+                    <input class=\"text-input\" type=\"text\" size=\"100\" required name=\"pwd\" id=\"pwd\"><br><br>
+                    <button class=\"send-button\" type=\"submit\" id=\"submit\" required name=\"submit\">Log-in</button></form><br>";
+                }?>
 
-            <form class="contact-form" method="post"> <label class="form-label"> Username:</label><br>
-                <input class="text-input" type="text" size="50" required name="username" id="username"><br><br>
-                <label class="form-label"> Password:</label><br>
-                <input class="text-input" type="text" size="100" required name="pwd" id="pwd"><br><br>
-                <button class="send-button" type="submit" id="submit" required name="submit">Log-in</button>
-            </form><br>
+            
         </div>
     </div>
-
-    <footer>
-        <a href="<?php $url ?>" class="button">Back to top</a>
-    </footer>
-
 
 </body>
 

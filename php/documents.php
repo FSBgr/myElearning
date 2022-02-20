@@ -62,6 +62,7 @@ function printDoc($db, $rowcount)
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
+                    <li> <a href="./login.php" class="button">Logout</a></li>
                 </ul>
             </div>
             <div class="flex-child-element second text-div">

@@ -36,7 +36,7 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
-                    <li> <a href="./login.php?login=true" class="button">login/logout</a></li>
+                    <li> <a href="./login.php?login=true" class="button">Logout</a></li>
                 </ul>
             </div>
             <div class="flex-child-element second text-div">
@@ -48,7 +48,7 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                 να καταθέσετε. Τέλος μπορείτε να επικοινωνείτε άμεσα με τους καθηγητές και τις καθηγήτριές σας, είτε
                 μέσω της πλατφόρμας, είτε χρησιμοποιώντας
                 τα στοιχεία επικοινωνίας που βρίσκονται στις αντίστοιχες καρτέλες.<br> <br>
-                <img class="image" src="./images/auth.png">
+                <img class="image" src="./images/auth.png" alt="Auth logo">
 
                 <?php if($_SESSION['role']){ 
                     echo "<a href=\"editusers.php\" class=\"button\">Επεξεργασία Χρηστών</a><br>";
