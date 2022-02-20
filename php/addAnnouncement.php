@@ -21,7 +21,7 @@ if (!empty($_GET)) {
     $editId = $_GET['id'];
     $editDate = $_GET['date'];
     $editSubject = $_GET['subject'];
-    $editText = $_GET['text'];
+    $editText = $_GET['subject'];
 }
 $edit = "edit";
 

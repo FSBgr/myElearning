@@ -4,22 +4,22 @@
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
 
-if(isset($_POST['adduser'])){
+if(isset($_POST['edituser'])){
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $pwd = mysqli_real_escape_string($db, $_POST['pwd']);
+    $changeid = mysqli_real_escape_string($db, $_POST['userid']);
     if(isset($_POST['isTutor'])){
         $tutor = true;
     } else {
         $tutor = false;
     }
 
-    $query = "INSERT INTO account (name,lastname, loginame, password, isTutor) VALUES ('$name', '$lastname', '$username', '$pwd', '$tutor')";
+    $query = "UPDATE account SET name='$name', lastname='$lastname',loginame='$loginame', password='$pwd', isTutor ='$tutor' WHERE id='$changeid' ";
     $results = mysqli_query($db, $query);
     header('location: index.php');
 }
-
 ?>
 
 <html>
@@ -33,7 +33,7 @@ if(isset($_POST['adduser'])){
 
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <title>
-        Προσθήκη Χρήστη
+    Επεξεργασία Χρήστη
 
     </title>
 </head>
@@ -41,7 +41,7 @@ if(isset($_POST['adduser'])){
 <body>
 
     <div class="page">
-        <h1 class="title-container"> Προσθήκη Χρήστη </h1>
+        <h1 class="title-container"> Επεξεργασία Χρήστη </h1>
         <div class="flex-parent-element">
             <div class="flex-child-element subflex first">
                 <ul class="menu">
@@ -55,6 +55,8 @@ if(isset($_POST['adduser'])){
             </div>
             
             <form class="contact-form" method="post">
+                <label class="form-label"> ID Χρήστη</label><br>
+                <input class="text-input" type="text" size="50" required name="userid" id="userid"><br><br>
                 <label class="form-label"> Όνομα</label><br>
                 <input class="text-input" type="text" size="50" required name="name" id="name"><br><br>
                 <label class="form-label"> Επώνυμο</label><br>
@@ -67,8 +69,7 @@ if(isset($_POST['adduser'])){
                 <label class="form-label">Καθηγητής</label><br><br>
                 <input type="radio" id="isStudent" name="isTutor" value="student">
                 <label class="form-label">Μαθητής</label><br><br>
-                <button class="send-button\" type="adduser\" id="adduser\" required name="adduser">Προσθήκη Χρήστη</button>";
-
+                <button class="send-button" type="edituser" id="edituser" required name="edituser">Επεξεργασία Χρήστη</button>
 
             </form><br>
         </div>
