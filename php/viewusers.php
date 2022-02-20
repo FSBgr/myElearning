@@ -5,10 +5,6 @@ session_start();
 //connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
-$sql = "SELECT * from announcement";
-if ($result = mysqli_query($db, $sql)) {
-    $rowcount = mysqli_num_rows($result);
-}
 
 ?>
 
@@ -47,9 +43,13 @@ if ($result = mysqli_query($db, $sql)) {
                     $query = "SELECT * FROM account";
                     $result = mysqli_query($db, $query);
                     while($row=mysqli_fetch_row($result)){
-                       echo "<li class=\"announcement-container\">
+                       echo "<li class=\"announcement-container withborder\">
                         <section>
-                            <h2 class=\"heading2\">Χρήστης ".$row[3]."</h2><br>";
+                            <h2 class=\"heading2\">Χρήστης ".$row[3]."</h2>";
+                        $del = 'deleteusers.php?id='.$row[0];
+                        echo "<br> <a href= $del> Διαγραφή </a>";
+                        $del = 'addusers.php?type=edit&id='.$row[0].'&name='.$row[1].'&lastname='.$row[2].'&loginame='.$row[3].'&password='.$row[4].'&isTutor='.$row[5];
+                        echo "<br> <a href= $del> Επεξεργασία </a> <br><br>";
                         echo "<p class=\"announcement-subtitle\"> <b>ID:</b> ";
                         echo  $row[0]."</p>";
                         echo "<p class=\"announcement-subtitle\"> <b>Όνομα:</b> ";
@@ -62,16 +62,12 @@ if ($result = mysqli_query($db, $sql)) {
                         echo  $row[4]."</p>";
                         echo "<p class=\"announcement-subtitle\"> <b>Ρόλος:</b> ";
                         if($row[5]){
-                            echo "Tutor </p>";
+                            echo "Tutor </p> <br>";
                         } else {
-                            echo "Student </p>";
+                            echo "Student </p> <br>";
                         }
+                        
                         echo " </section> </li>";
-                        $del = 'deleteusers.php?id='.$row[0];
-                        echo "<a href= $del> Διαγραφή </a><br><br>";
-                        /*$del = 'adduser?type=edit&id='.$row[0].'&name='.$row[1].'lastname='.$row[2].'&loginame='.$row[3].'&password='.$row[4].'&isTutor='.$row[5];
-                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
-
 
                     }
                 ?>
