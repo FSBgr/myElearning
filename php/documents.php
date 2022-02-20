@@ -18,28 +18,25 @@ if ($result = mysqli_query($db, $sql)) {
 
 function printDoc($db, $rowcount)
 {
-    if ($rowcount != 0) {
         if($_SESSION['role']){
             echo "<a href=\"adddocument.php\" class=\"button\">Προσθήκη Νέου Εγγράφου</a><br><br><br></p></li>";
         }
-        for ($i = 1; $i <= $rowcount; $i++) {
+
+        $query = "SELECT * FROM document";
+        $result = mysqli_query($db, $query);
+        while($row=mysqli_fetch_row($result)){
             echo "<li class=\"announcement-container\"> <h2 class=\"heading2\"> ";
-            $query = "SELECT title FROM document WHERE id='$i'";
-            $result = mysqli_query($db, $query);
-            $title = implode(mysqli_fetch_row($result));
-            echo " $title </h2> <br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
-            $query = "SELECT description FROM document WHERE id='$i'";
-            $result = mysqli_query($db, $query);
-            $description = implode(mysqli_fetch_row($result));
-            $query = "SELECT source FROM document WHERE id='$i'";
-            $result = mysqli_query($db, $query);
-            $source = implode(mysqli_fetch_row($result));
-            echo " $description <br> <a href=\"$source\" class=\"button\">Download</a><br></p></li>";
+            echo $row[1]."</h2>";
+            if ($_SESSION['role']) {
+                $del = 'deletedocument.php?id='.$row[0];
+                echo "<br> <a href= $del> Διαγραφή </a>";
+                /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
+                echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
+            }
+            echo  "<br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
+            echo $row[2]. "<br> <a href=\"".$row[3]."\" class=\"button\">Download</a><br></p></li>";
         }
-    }else{
-        echo " NO AVAILABLE DOCUMENTS";
-    }
-}
+            }
 ?>
 
 <head>

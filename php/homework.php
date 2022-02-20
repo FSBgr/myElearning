@@ -39,7 +39,9 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
             $assignment_ids = mysqli_query($db, $fetch_assignment_ids);
             while ($row = mysqli_fetch_row($assignment_ids)) {
                 echo "<ul class=\"withborder\" style=\"list-style: none\"> <li class=\"announcement-container\">
-                        <h2 class=\"heading2\"> Εργασία " . implode($row) . "</h2> <br>
+                        <h2 class=\"heading2\"> Εργασία " . implode($row) . "</h2>";
+                        
+                        echo "<br>
                         <p class=\"list-text\"> <em><b>Στόχοι: </b></em></p> <br>
                         <ol>";
                 $getGoals = "SELECT DISTINCT goal.description FROM hasgoal INNER JOIN goal ON goal.id = hasgoal.goalId INNER JOIN assignment ON hasgoal.assignmentId = assignment.id WHERE assignmentId=" . implode($row);
@@ -70,8 +72,14 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                 $get_date = "SELECT expdate FROM assignment WHERE id=" . implode($row);
                 $date = mysqli_fetch_row(mysqli_query($db, $get_date));
                 echo "<p class=\"list-text\"><span class=\"redText\"> <em><b>Ημερομηνία Παράδοσης </b></em></span>" .
-                    implode($date) . "</p>
-                </li> </ul>";
+                    implode($date) . "</p>";
+                    if ($_SESSION['role']) {
+                        $del = 'deletehomework.php?id='.implode($row);
+                        echo "<br> <a href= $del> Διαγραφή </a>";
+                        /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
+                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
+                    }
+                echo "</li> </ul>";
             }
             ?>
             </ul>
