@@ -5,17 +5,8 @@ session_start();
 if(!isset($_SESSION['username'])){
     header('Location: ./login.php');
 }
-//echo isset($_SESSION['username']);
-//connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
 
-/*if(strcmp(!$_SESSION['logged'], "unknown")){
-    header('Location: ./login.php');
-} elseif (strcmp(!$_SESSION['logged'], "tutor")){
-    header('Location: ./index.php?tutor');
-} else{
-    header('Location: ./index.php?student');
-}*/
 ?>
 
 <html>
@@ -49,6 +40,7 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                 </ul>
             </div>
             <div class="flex-child-element second text-div">
+                
                 Καλώς ορίσατε στην ψηφιακή πλατφόρμα του πανεπιστημίου μας! Εδώ μέσα μπορείτε να βρείτε όλες τις
                 ανακοινώσεις σχετικά με το πανεπιστήμιο,
                 τη σχολή και το τμήμα σας. Επίσης έχετε πρόσβαση στο περιεχόμενο των μαθημάτων που παρακολουθείτε, όπως
@@ -57,6 +49,13 @@ $db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not c
                 μέσω της πλατφόρμας, είτε χρησιμοποιώντας
                 τα στοιχεία επικοινωνίας που βρίσκονται στις αντίστοιχες καρτέλες.<br> <br>
                 <img class="image" src="./images/auth.png">
+
+                <?php if($_SESSION['role']){ 
+                    echo "<a href=\"editusers.php\" class=\"button\">Επεξεργασία Χρηστών</a><br>";
+                    echo "<a href=\"deleteusers.php\" class=\"button\">Διαγραφή Χρηστών</a><br>";
+                    echo "<a href=\"addusers.php\" class=\"button\">Προσθήκη Χρηστών</a><br>";
+                }
+                    ?>
             </div>
         </div>
     </div>
