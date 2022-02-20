@@ -2,7 +2,7 @@
 
 <?php
 session_start();
-$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
 if (isset($_POST['addann'])) {
     $date = mysqli_real_escape_string($db, $_POST['date']);

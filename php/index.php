@@ -5,7 +5,7 @@ session_start();
 if(!isset($_SESSION['username'])){
     header('Location: ./login.php');
 }
-$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
 ?>
 

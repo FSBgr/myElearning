@@ -67,7 +67,7 @@ if(isset($_POST['adduser'])){
                 <label class="form-label">Καθηγητής</label><br><br>
                 <input type="radio" id="isStudent" name="isTutor" value="student">
                 <label class="form-label">Μαθητής</label><br><br>
-                <button class="send-button\" type="adduser\" id="adduser\" required name="adduser">Προσθήκη Χρήστη</button>";
+                <button class="send-button" type="adduser" id="adduser" required name="adduser">Προσθήκη Χρήστη</button>
 
 
             </form><br>

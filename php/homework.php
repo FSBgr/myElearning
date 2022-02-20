@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php session_start();
-$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
 ?>
 <html>

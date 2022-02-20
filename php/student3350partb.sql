@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2022 at 03:27 PM
+-- Generation Time: Feb 20, 2022 at 06:17 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `myelearning`
+-- Database: `student3350partb`
 --
 
 -- --------------------------------------------------------
@@ -41,7 +41,10 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `name`, `lastname`, `loginame`, `password`, `isTutor`) VALUES
-(1, 'Christos', 'Christidis', 'admin', 'admin', 1);
+(1, 'Christos', 'Christidis', 'admin', 'admin', 1),
+(2, 'pepegas', 'pepegidis', 'student', 'student', 0),
+(4, 'TAKIS', 'takis', 'takis', 'takis', 0),
+(5, 'taos', 'teas', '', 'pakis', 1);
 
 -- --------------------------------------------------------
 
@@ -51,9 +54,9 @@ INSERT INTO `account` (`id`, `name`, `lastname`, `loginame`, `password`, `isTuto
 
 CREATE TABLE `announcement` (
   `id` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
-  `subject` varchar(100) DEFAULT NULL,
-  `text` longtext DEFAULT NULL
+  `date` date NOT NULL,
+  `subject` varchar(150) NOT NULL,
+  `text` varchar(10000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -61,11 +64,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `date`, `subject`, `text`) VALUES
-(1, '2022-01-26', 'ΕΝΑΡΞΗ ΜΑΘΗΜΑΤΩΝ', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean dictum metus at arcu pretium, vel congue leo ultricies. Duis condimentum iaculis lectus, et finibus ipsum varius eget. Suspendisse potenti. Aliquam quis porta nisl. Vivamus ac tempor dui. Etiam aliquam augue non ante interdum varius. Ut tortor velit, facilisis non ipsum a, tempor scelerisque mauris. Fusce faucibus sapien lectus, ac maximus elit rhoncus ac. Morbi augue ante, suscipit quis est ut, iaculis maximus lorem. Cras feugiat eros non orci faucibus pulvinar. Aenean id sem a ante dapibus pretium ac eu mauris. Mauris interdum est metus, et efficitur mi blandit vel.\r\n\r\nFusce et eros a lorem luctus placerat. In vel risus sed arcu viverra pellentesque eu nec arcu. Vestibulum gravida tellus ac diam commodo aliquam. Aenean urna quam, consequat vel leo eu, laoreet fringilla nunc. Morbi lorem augue, hendrerit vel metus vestibulum, cursus interdum risus. Suspendisse euismod eget lorem et molestie. Curabitur nec tincidunt orci, in ultricies nibh. Morbi nisi velit, vestibulum in bibendum id, ullamcorper sed ex. Aliquam in mollis velit. Mauris sed ipsum vitae enim tempor accumsan sit amet eget arcu. Mauris at tortor volutpat, lacinia nunc et, condimentum nisi. Ut cursus dictum justo et elementum. Nunc hendrerit, mi a hendrerit rutrum, tellus metus egestas sem, at molestie neque leo id leo. Maecenas purus nibh, maximus sed mattis ut, consequat vel urna. Pellentesque suscipit scelerisque tortor, vitae pretium erat fringilla a.\r\n\r\nUt neque lorem, auctor a suscipit id, fringilla nec magna. Donec posuere, ipsum sit amet consequat malesuada, massa nibh consectetur ex, egestas dapibus massa felis a tellus. In eget imperdiet diam. Donec at libero a velit commodo accumsan. Phasellus a tempor sapien. Maecenas eget consequat enim. Vestibulum id pharetra ipsum. Vivamus vestibulum purus eget magna porttitor, in vulputate leo ornare. Suspendisse egestas massa quis consectetur gravida. Nunc at commodo purus, non condimentum augue. Nulla vulputate est vitae arcu rutrum vestibulum.'),
-(2, '2022-01-26', 'Έναρξη μαθημάτων', 'Τα μαθήματα αρχίζουν τη Δευτέρα 17/12/2022'),
-(3, '2022-01-30', 'Ανάρτηση Εργασίας', 'Η 1η εργασία έχει ανακοινωθεί στην ιστοσελίδα «Εργασίες» Τα μαθήματα αρχίζουν την Δευτέρα 17/12/2022'),
-(4, '2022-02-01', 'Ανάρτηση Εργασίας', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt eros sed lectus pellentesque imperdiet. Vestibulum aliquet lorem turpis, eget accumsan urna pulvinar sit amet. In hac habitasse platea dictumst. Etiam scelerisque ligula ut justo eleifend condimentum. Sed sit amet finibus ligula. Nulla ultricies sed ligula in varius. Nam sed luctus velit. Ut convallis congue semper. In rutrum ex elementum rutrum rutrum. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam pellentesque quam odio, sollicitudin imperdiet velit cursus a. Duis rutrum et nisi non consectetur. Integer vitae volutpat mauris, nec rutrum ipsum. Ut varius euismod varius. Pellentesque condimentum eros non molestie commodo. Duis tincidunt id lacus ut porttitor. Suspendisse id interdum ante, quis eleifend metus. Morbi luctus suscipit ullamcorper. Ut faucibus ante id mattis blandit. Aenean et dui urna. Fusce pulvinar magna at dolor condimentum lobortis. Cras volutpat eu leo eu efficitur. Morbi tincidunt elementum euismod. Praesent suscipit a sem eget maximus. In ac neque nibh. Vestibulum metus eros, sagittis sed eros quis, sodales viverra sapien. Cras eget ligula ipsum. Morbi sed sem at diam consectetur hendrerit. Aenean lacinia purus id lacus tempor, tincidunt efficitur velit euismod. Sed efficitur arcu a risus iaculis, eget vehicula odio accumsan. Cras dolor felis, lacinia eget arcu nec, venenatis suscipit nisl. Maecenas laoreet non risus eget luctus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Mauris sed erat erat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec suscipit imperdiet varius. Nunc dictum nunc quis ex cursus, sed luctus nunc commodo. Vivamus non ullamcorper mi. Pellentesque vel nisi nec lacus mollis pellentesque eget et erat. Nullam faucibus lorem et massa tempus, ac dapibus ipsum laoreet. Duis pharetra erat lorem, et posuere ex ornare in. Etiam ut scelerisque orci, et fermentum risus. Nullam mauris arcu, aliquam sit amet lobortis vitae, consequat in diam. Aenean lacus elit, convallis at rutrum sit amet, pharetra eu mi. Cras quis placerat nisl. Morbi ultricies est id ligula vulputate volutpat. Etiam in orci consequat, varius nisl hendrerit, euismod lectus. Donec eros tellus, luctus non augue blandit, vehicula tempor metus. Proin et ultrices arcu, in laoreet dui. Suspendisse eleifend orci sit amet enim tempus maximus. Nullam egestas elementum metus eget bibendum. Nullam eget fringilla nibh. Cras tincidunt pharetra volutpat. Nulla condimentum congue nibh quis fermentum. Sed ut pharetra neque. Integer mattis posuere arcu, a euismod sapien consectetur elementum. Fusce sed sem id nisl egestas placerat at vitae ante. Aenean sit amet imperdiet risus. Nunc et sollicitudin felis. Etiam ut hendrerit eros. In iaculis diam nec purus volutpat, quis maximus odio tempus. Sed accumsan magna et ante commodo, at convallis dolor blandit.'),
-(5, '2022-02-14', 'Test Drive Override', 'triangles sqares whatever');
+(9, '2022-01-26', 'LOREM IPSUM', 'jhbfgngfjhbjfntjngjnfg'),
+(10, '2022-02-10', 'LOREM IPSUM', 'tatata');
 
 -- --------------------------------------------------------
 
@@ -75,8 +75,56 @@ INSERT INTO `announcement` (`id`, `date`, `subject`, `text`) VALUES
 
 CREATE TABLE `assignment` (
   `id` int(11) NOT NULL,
-  `hasGoal` int(11) DEFAULT NULL
+  `expdate` date DEFAULT NULL,
+  `title` varchar(1000) NOT NULL,
+  `source` varchar(1000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `assignment`
+--
+
+INSERT INTO `assignment` (`id`, `expdate`, `title`, `source`) VALUES
+(2, '2022-02-22', 'Machine Learning', 'https://google.com'),
+(3, '2022-02-26', 'Ανάπτυξη Διαδικτυακού Πληροφορικού Συστήματος', 'https://amazon.com');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `deliverable`
+--
+
+CREATE TABLE `deliverable` (
+  `id` int(11) NOT NULL,
+  `description` varchar(1000) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `deliverable`
+--
+
+INSERT INTO `deliverable` (`id`, `description`) VALUES
+(1, 'Αρχείο Python'),
+(2, 'Γραπτή Αναφορά'),
+(3, 'Screenshots με αποτελέσματα'),
+(4, 'Αρχεία HTML, CSS, PHP'),
+(5, 'Ανέβασμα του ιστοτόπου στο http://domain users.auth.gr'),
+(6, 'vcbncvbncvbmnxc\r'),
+(7, 'vcbncvbncvbmnxc\r'),
+(8, 'gfhjfg,kmnbv\r'),
+(9, 'gfhjfg,kmnbv\r'),
+(10, 'gfhjfg,kmnbv\r'),
+(11, 'gfhjfg,kmnbv\r'),
+(12, 'gfmbnvmcvb\r'),
+(13, 'nm,kvbnncv'),
+(14, 'gfhjfg,kmnbv\r'),
+(15, 'gfmbnvmcvb\r'),
+(16, 'nm,kvbnncv'),
+(17, 'gfhjdhbdsb\r'),
+(18, 'vbncvbczxvb\r'),
+(19, 'ncvbnxcvbnvcb'),
+(20, 'dsfgsdnhgfs\r'),
+(21, 'sdfghshdfghs');
 
 -- --------------------------------------------------------
 
@@ -96,9 +144,7 @@ CREATE TABLE `document` (
 --
 
 INSERT INTO `document` (`id`, `title`, `description`, `source`) VALUES
-(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html'),
-(2, 'OLA MPOMPA', 'Το έγγραφο αυτό αποτελεί τεκμήριο της διδακτικής διαδικασίας ως ένα από τα σημαντικότερα εγχειρίδια με τα οποία έχουν δουλέψει κορυφάιοι εκπαιδευτικοί ανά τον κόσμο και αποτελούν αναπόσπαστο κομμάτι κάθε διακεκριμένου πανεπιστημίου σε όλη την υφήλιο. Μπορείτε να προχωρήσετε στην ανάγνωσή του πατώντας τον παρακάτω σύνδεσμο.', 'https://google.com'),
-(3, 'McBeth', 'Old McDonald Had a farm e i ei o', 'https://researchgate.com');
+(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html');
 
 -- --------------------------------------------------------
 
@@ -157,6 +203,74 @@ CREATE TABLE `goal` (
   `description` longtext DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `goal`
+--
+
+INSERT INTO `goal` (`id`, `description`) VALUES
+(1, 'Εκπαίδευση Νευρωνικών Δικτύων'),
+(2, 'Εκμάθηση Python'),
+(3, 'Ανάπτυξη Machine Learning Αλγορίθμων'),
+(4, 'Εκμάθηση HTML'),
+(5, 'Εκμάθηση CSS'),
+(6, 'Εκμάθηση PHP'),
+(7, 'sfgjsfgjgsfjgfsjsgf\r'),
+(8, 'fgsjgfsjgfsjgfs\r'),
+(9, 'fjsgjghjfghj'),
+(10, 'sfgjsfgjgsfjgfsjsgf\r'),
+(11, 'fgsjgfsjgfsjgfs\r'),
+(12, 'fjsgjghjfghj'),
+(13, 'sfgjsfgjgsfjgfsjsgf\r'),
+(14, 'fgsjgfsjgfsjgfs\r'),
+(15, 'fjsgjghjfghj'),
+(16, 'sfgjsfgjgsfjgfsjsgf\r'),
+(17, 'fgsjgfsjgfsjgfs\r'),
+(18, 'fjsgjghjfghj'),
+(19, 'fdhgjdgjdghk\r'),
+(20, 'ghfjfghjfgjgfh\r'),
+(21, 'gfhjfgj'),
+(22, 'fdhgjdgjdghk\r'),
+(23, 'ghfjfghjfgjgfh\r'),
+(24, 'gfhjfgj'),
+(25, 'fdhgjdgjdghk\r'),
+(26, 'ghfjfghjfgjgfh\r'),
+(27, 'gfhjfgj'),
+(28, 'fdhgjdgjdghk\r'),
+(29, 'ghfjfghjfgjgfh\r'),
+(30, 'gfhjfgj'),
+(31, 'fdhgjdgjdghk\r'),
+(32, 'ghfjfghjfgjgfh\r'),
+(33, 'gfhjfgj'),
+(34, 'dfhfgjfjfghdfgjh\r'),
+(35, 'ghfjghjgfh\r'),
+(36, 'kghjghjgfhj'),
+(37, 'fsdgafdgsdfgdsfg\r'),
+(38, 'dsfgdsfgsdfg\r'),
+(39, 'dfsgdfsgdsg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasdeliverable`
+--
+
+CREATE TABLE `hasdeliverable` (
+  `id` int(11) NOT NULL,
+  `assignmentId` int(11) NOT NULL,
+  `deliverableId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hasdeliverable`
+--
+
+INSERT INTO `hasdeliverable` (`id`, `assignmentId`, `deliverableId`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(3, 2, 3),
+(4, 3, 4),
+(5, 3, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -164,9 +278,22 @@ CREATE TABLE `goal` (
 --
 
 CREATE TABLE `hasgoal` (
+  `id` int(11) NOT NULL,
   `assignmentId` int(11) NOT NULL,
-  `goaldID` int(11) NOT NULL
+  `goalId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hasgoal`
+--
+
+INSERT INTO `hasgoal` (`id`, `assignmentId`, `goalId`) VALUES
+(1, 2, 1),
+(2, 2, 2),
+(3, 2, 3),
+(4, 3, 4),
+(5, 3, 5),
+(6, 3, 6);
 
 --
 -- Indexes for dumped tables
@@ -188,6 +315,12 @@ ALTER TABLE `announcement`
 -- Indexes for table `assignment`
 --
 ALTER TABLE `assignment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `deliverable`
+--
+ALTER TABLE `deliverable`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,6 +348,18 @@ ALTER TABLE `goal`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `hasdeliverable`
+--
+ALTER TABLE `hasdeliverable`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `hasgoal`
+--
+ALTER TABLE `hasgoal`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -222,19 +367,25 @@ ALTER TABLE `goal`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `assignment`
 --
 ALTER TABLE `assignment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `deliverable`
+--
+ALTER TABLE `deliverable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `document`
@@ -258,7 +409,19 @@ ALTER TABLE `emailaddresses`
 -- AUTO_INCREMENT for table `goal`
 --
 ALTER TABLE `goal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT for table `hasdeliverable`
+--
+ALTER TABLE `hasdeliverable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `hasgoal`
+--
+ALTER TABLE `hasgoal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

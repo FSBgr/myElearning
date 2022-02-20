@@ -4,7 +4,7 @@
 session_start();
 
 //connecting to db
-$db = mysqli_connect('localhost', 'root', '', 'myelearning') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'student3350partB') or die("could not connect to db");
 
 $sql = "SELECT * from emailaddresses";
 if ($result = mysqli_query($db, $sql)) {
