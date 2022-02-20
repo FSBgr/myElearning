@@ -48,6 +48,15 @@ if(isset($_POST['addhom'])){
         $query = "INSERT INTO hasdeliverable (assignmentId, deliverableId) VALUES ('$newid', '$newdeliverableid')";
         $result = mysqli_query($db, $query);
     }
+
+    date_default_timezone_set('Greece/Athens'); 
+    $annhomeworkdate = date("Y-m-d");
+    $annhomeworksubject = "Ανάρτηση Εργασίας";
+    $annhomeworkbody = "Έχει ανακοινωθεί η ".$newid."η εργασία στη Σελίδα <a href=\"homework.php\">Εργασίες</a>";
+
+
+    $query = "INSERT INTO announcement (date, subject, text) VALUES ('$annhomeworkdate', '$annhomeworksubject', '$annhomeworkbody')";
+    $result = mysqli_query($db, $query);
     
     header('location: homework.php');
 

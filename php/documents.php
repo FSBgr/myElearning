@@ -7,36 +7,7 @@ session_start();
 //connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
-$sql = "SELECT * from document";
-if ($result = mysqli_query($db, $sql)) {
-    $rowcount = mysqli_num_rows($result);
-}
 
-//function printDoc($db, $rowcount){
-
-//}
-
-function printDoc($db, $rowcount)
-{
-        if($_SESSION['role']){
-            echo "<a href=\"adddocument.php\" class=\"button\">Προσθήκη Νέου Εγγράφου</a><br><br><br></p></li>";
-        }
-
-        $query = "SELECT * FROM document";
-        $result = mysqli_query($db, $query);
-        while($row=mysqli_fetch_row($result)){
-            echo "<li class=\"announcement-container\"> <h2 class=\"heading2\"> ";
-            echo $row[1]."</h2>";
-            if ($_SESSION['role']) {
-                $del = 'deletedocument.php?id='.$row[0];
-                echo "<br> <a href= $del> Διαγραφή </a>";
-                /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
-                echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
-            }
-            echo  "<br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
-            echo $row[2]. "<br> <a href=\"".$row[3]."\" class=\"button\">Download</a><br></p></li>";
-        }
-            }
 ?>
 
 <head>
@@ -67,7 +38,25 @@ function printDoc($db, $rowcount)
             </div>
             <div class="flex-child-element second text-div">
                 <ul>
-                    <?php printDoc($db, $rowcount) ?>
+                    <?php 
+                        if ($_SESSION['role']) {
+                            echo "<a href=\"adddocument.php\" class=\"button\">Προσθήκη Νέου Εγγράφου</a><br><br><br></p></li>";
+                        }
+                        $query = "SELECT * FROM document";
+                        $result = mysqli_query($db, $query);
+                        while ($row = mysqli_fetch_row($result)) {
+                            echo "<li class=\"announcement-container\"> <h2 class=\"heading2\"> ";
+                            echo $row[1] . "</h2>";
+                            if ($_SESSION['role']) {
+                                $del = 'deletedocument.php?id=' . $row[0];
+                                echo "<br> <a href= $del> Διαγραφή </a>";
+                                /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
+                                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
+                            }
+                            echo  "<br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
+                            echo $row[2] . "<br> <a href=\"" . $row[3] . "\" class=\"button\">Download</a><br></p></li>";
+                        }
+                    ?>
                 </ul>
 
             </div>
