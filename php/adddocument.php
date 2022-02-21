@@ -4,12 +4,14 @@
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 
-$dir = "./uploads";
-$folder = $dir . basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($folder, PATHINFO_EXTENSION));
-// Check if image file is a actual image or fake image
+
+
 if (isset($_POST["submit"])) {
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $desc = mysqli_real_escape_string($db, $_POST['desc']);
+    $dir = "./uploads/";
+    $target_file = $dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
     if (file_exists($target_file)) {
         echo "Sorry, file already exists.";
         $uploadOk = 0;
@@ -19,11 +21,12 @@ if (isset($_POST["submit"])) {
         echo "Sorry, your file was not uploaded.";
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
+            header('location: documents.php');
         }
     }
+
+    $query = "INSERT INTO document (title, description, source) VALUES ('$title', '$desc', '$target_file')";
+    $result = mysqli_query($db, $query);
 }
 
 ?>

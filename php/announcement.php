@@ -60,9 +60,11 @@ if ($result = mysqli_query($db, $sql)) {
                         echo " $id </h2>";
 
                         if ($_SESSION['role']) {
-                            $del = 'deleteannouncement.php?id='.$row['id'];
+                            $del = 'deleteannouncement.php?id='.$id;
                             echo "<br> <a href= $del> Διαγραφή </a>";
-                            $del = 'addannouncement.php?type=edit&id='.$row['id'].'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
+                            $tempsub = str_replace(' ', '_', $subject);
+                            $temptext = str_replace(' ', '_', $text);
+                            $del = "addannouncement.php?type=edit&id=".$id."&date=".$date."&subject=".$tempsub."&text=".$temptext."";
                             echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                         }
                         echo "<p class=\"announcement-subtitle\"> <b>Ημερομηνία:</b>";
