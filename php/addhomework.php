@@ -4,7 +4,6 @@
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 //$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
-mysqli_set_charset($db, "utf8");
 
 if(isset($_POST['addhom'])){
     $expdate = mysqli_real_escape_string($db, $_POST['expdate']);
@@ -45,7 +44,7 @@ if(isset($_POST['addhom'])){
         $newdeliverableid = intval($result) + 1; //set deliverable id
         
         $query = "INSERT INTO deliverable (id, description) VALUES ('$newdeliverableid','$line')";
-        $result = mysqli_query($db, $query);
+        $result = mysqli_query($db, $query); 
 
         $query = "INSERT INTO hasdeliverable (assignmentId, deliverableId) VALUES ('$newid', '$newdeliverableid')";
         $result = mysqli_query($db, $query);
@@ -69,13 +68,9 @@ if (!empty($_GET)) {
     $type = $_GET['type'];
     $editId = $_GET['id'];
     $editTitle = $_GET['title'];
-    $editTitle = str_replace("_"," ", $editTitle);
     $editGoals = $_GET['goals'];
-    $editGoals = str_replace("_","\n",$editGoals);
     $editDeliverables = $_GET['deliverables'];
-    $editDeliverables = str_replace("_","\n",$editDeliverables);
     $editDate = $_GET['date'];
-    $editSource = $_GET['source'];
 }
 $edit = "edit";
 
@@ -129,15 +124,11 @@ $edit = "edit";
                 <label class="form-label"> Παραδοτέα (διαχωρίστε κάθε παραδοτέο με νέα γραμμή)</label><br>
                 <textarea rows="5" cols="40" name="deliverable" id="deliverable"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDeliverables;}?></textarea><br><br>
                 <label class="form-label"> Εκφώνηση (εισάγετε τον σύνδεσμο ή το path του αρχείου της εργασίας)</label><br>
-                <input class="text-input" type="text" size="50" name="doc" id="doc" <?php if(isset($type) && strcmp($type, $edit) == 0){
-                    echo "value=\"$editSource\"";
-                }
-
-                ?>><br><br>
+                <input class="text-input" type="text" size="50" name="doc" id="doc"><br><br>
                  <?php if (isset($type) && strcmp($type, $edit) == 0) {
-                        echo "<button class=\"send-button\" type=\"editdoc\" id=\"editdoc\" required name=\"editdoc\">Επεξεργασία Εργασίας</button>";
+                        echo "<button class=\"send-button\" type=\"edithom\" id=\"edithom\" required name=\"edithom\">Επεξεργασία Εργασίας</button>";
                     } else {
-                        echo "<button class=\"send-button\" type=\"adddoc\" id=\"adddoc\" required name=\"adddoc\">Προσθήκη Νέας Εργασίας</button>";
+                        echo "<button class=\"send-button\" type=\"addhom\" id=\"addhom\" required name=\"addhom\">Προσθήκη Νέας Εργασίας</button>";
                     }?>
             </form><br>
         </div>

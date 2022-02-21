@@ -108,7 +108,7 @@ if(isset($_POST["editdoc"])){
 
                 ?>><br><br>
                 <label class="form-label"> Περιγραφή:</label><br>
-                <textarea class="text-input"  size="100" required name="desc" id="desc"> <?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDesc;}?></textarea><br><br>
+                <textarea rows="5" cols="40" required name="desc" id="desc"> <?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDesc;}?></textarea><br><br>
                 <label class="form-label"> Αρχείο:</label><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
                 <?php
