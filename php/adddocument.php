@@ -6,7 +6,7 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
 
 
 
-if (isset($_POST["submit"])) {
+if (isset($_POST["adddoc"])) {
     $title = mysqli_real_escape_string($db, $_POST['title']);
     $desc = mysqli_real_escape_string($db, $_POST['desc']);
     $dir = "./uploads/";
@@ -29,6 +29,43 @@ if (isset($_POST["submit"])) {
     $result = mysqli_query($db, $query);
 }
 
+
+if (!empty($_GET)) {
+    $type = $_GET['type'];
+    $editId = $_GET['id'];
+    $editTitle = $_GET['title'];
+    $editDesc = $_GET['description'];
+    $editPath = $_GET['path'];
+}
+$edit = "edit";
+
+if(isset($_POST["editdoc"])){
+    $title = mysqli_real_escape_string($db, $_POST['title']);
+    $desc = mysqli_real_escape_string($db, $_POST['desc']);
+    $dir = "./uploads/";
+    $target_file = $dir . basename($_FILES["fileToUpload"]["name"]);
+    $uploadOk = 1;
+    if (file_exists($target_file)) {
+        echo "Sorry, file already exists.";
+        $uploadOk = 0;
+    }
+
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+    } else {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+            header('location: documents.php');
+        }
+    }
+
+    unlink($editPath);
+
+    $query = "UPDATE document SET title='$title', description='$desc',source='$target_file' WHERE id='$editId' ";
+    $results = mysqli_query($db, $query);
+    header('location: adddocument.php');
+}
+
+
 ?>
 <html>
 
@@ -41,14 +78,14 @@ if (isset($_POST["submit"])) {
 
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <title>
-        Προσθήκη Νέου Εγγράφου
+    <?php if(isset($type) && strcmp($type, $edit) == 0){ echo "Επεξεργασία Εγγράφου";} else{echo "Προσθήκη Νέου Εγγράφου";}?>
     </title>
 </head>
 
 <body>
 
     <div class="page">
-        <h1 class="title-container">Προσθήκη Νέου Εγγράφου</h1>
+        <h1 class="title-container"><?php if(isset($type) && strcmp($type, $edit) == 0){ echo "Επεξεργασία Εγγράφου</h1>";} else{echo "Προσθήκη Νέου Εγγράφου</h1>";}?>
         <div class="flex-parent-element">
             <div class="flex-child-element subflex first">
                 <ul class="menu">
@@ -62,12 +99,22 @@ if (isset($_POST["submit"])) {
             </div>
             <form class="contact-form" method="post" enctype="multipart/form-data">
                 <label class="form-label"> Τίτλος:</label><br>
-                <input class="text-input" type="text" size="50" required name="title" id="title"><br><br>
+                <input class="text-input" type="text" size="50" required name="title" id="title" <?php if(isset($type) && strcmp($type, $edit) == 0){
+                    echo "value=\"$editTitle\"";
+                }
+
+                ?>><br><br>
                 <label class="form-label"> Περιγραφή:</label><br>
-                <textarea class="text-input" type="text" size="100" required name="desc" id="desc"></textarea><br><br>
+                <textarea class="text-input"  size="100" required name="desc" id="desc" <?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDesc;}?>></textarea><br><br>
                 <label class="form-label"> Αρχείο:</label><br><br>
                 <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
-                <button class="send-button" type="submit" id="submit" required name="submit">Προσθήκη Εγγράφου</button>
+                <?php
+                    if (isset($type) && strcmp($type, $edit) == 0) {
+                        echo "<button class=\"send-button\" type=\"editdoc\" id=\"editdoc\" required name=\"editdoc\">Επεξεργασία Εγγράφου</button>";
+                    } else {
+                        echo "<button class=\"send-button\" type=\"adddoc\" id=\"adddoc\" required name=\"adddoc\">Προσθήκη Νέου Εγγράφου</button>";
+                    }
+                ?>
             </form><br>
         </div>
     </div>

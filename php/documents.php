@@ -50,8 +50,11 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                             if ($_SESSION['role']) {
                                 $del = 'deletedocument.php?id=' . $row[0];
                                 echo "<br> <a href= $del> Διαγραφή </a>";
-                                /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
-                                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
+                                $temptitle = str_replace(' ', '_', $row[1]);
+                                $tempdesc = str_replace(' ', '_', $row[2]);
+                                $temppath = str_replace(' ', '_', $row[3]);
+                                $del = 'adddocument.php?type=edit&id='.$row[0].'&title='.$temptitle.'&description='.$tempdesc.'&path='.$temppath;
+                                echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                             }
                             echo  "<br> <p class=\"list-text withborder\"> <em><b>Περιγραφή: </b></em>";
                             echo $row[2] . "<br> <a href=\"" . $row[3] . "\" class=\"button\">Download</a><br></p></li>";
