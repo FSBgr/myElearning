@@ -32,6 +32,8 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                 </ul>
             </div>
             <?php
+            $allGoals = "";
+            $allDeliverables="";
             echo "<div class=\"flex-child-element second text-div withborder\">"; 
             if($_SESSION['role']){
                 echo "<a href=\"addhomework.php\" class=\"button\">Προσθήκη Νέας Εργασίας</a><br></p></li>";
@@ -49,6 +51,7 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                 $goals = mysqli_query($db, $getGoals);
                 while ($rr = mysqli_fetch_row($goals)) {
                     echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
+                    $allGoals = $allGoals.implode($rr);
                 }
                 echo "</ol>";
 
@@ -63,22 +66,28 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                         <ol>";
                 $get_deliverables = "SELECT DISTINCT deliverable.description FROM hasdeliverable INNER JOIN deliverable ON deliverable.id = hasdeliverable.deliverableId INNER JOIN assignment ON hasdeliverable.assignmentId = assignment.id WHERE assignmentId=" . implode($row);
                 $deliverables = mysqli_query($db, $get_deliverables);
-                //echo mysqli_num_rows($goals);
                 while ($rr = mysqli_fetch_row($deliverables)) {
-                    //echo implode($rr)."<br>";
                     echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
+                    $allDeliverables = $allDeliverables." ".implode($rr);
                 }
                 echo "</ol>";
 
                 $get_date = "SELECT expdate FROM assignment WHERE id=" . implode($row);
                 $date = mysqli_fetch_row(mysqli_query($db, $get_date));
+
+                $query = "SELECT title FROM assignment WHERE id=". implode($row);
+                $result = mysqli_fetch_row(mysqli_query($db, $query));
+                $title = implode($result);
                 echo "<p class=\"list-text\"><span class=\"redText\"> <em><b>Ημερομηνία Παράδοσης </b></em></span>" .
                     implode($date) . "</p>";
                     if ($_SESSION['role']) {
                         $del = 'deletehomework.php?id='.implode($row);
                         echo "<br> <a href= $del> Διαγραφή </a>";
-                        /*$edit = 'addhomework.php?type=edit&id='.$row.'&date='.$row['date'].'&subject='.$row['subject'].'&text='.$row['text'];
-                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";*/
+                        $tempGoals = str_replace(' ', '_', $allGoals);
+                        $tempdel= str_replace(' ', '_', $allDeliverables);
+                        $temptitle = str_replace(' ', '_', $title);
+                        $del = 'addhomework.php?type=edit&id='.implode($row).'&date='.implode($date).'&title='.$temptitle.'&goals='.$tempGoals.'&deliverables='.$tempdel;
+                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                     }
                 echo "</li> </ul>";
             }

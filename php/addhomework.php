@@ -62,6 +62,17 @@ if(isset($_POST['addhom'])){
 
 
 }
+
+if (!empty($_GET)) {
+    $type = $_GET['type'];
+    $editId = $_GET['id'];
+    $editTitle = $_GET['title'];
+    $editGoals = $_GET['goals'];
+    $editDeliverables = $_GET['deliverables'];
+    $editDate = $_GET['date'];
+}
+$edit = "edit";
+
 ?>
 
 <html>
@@ -75,14 +86,14 @@ if(isset($_POST['addhom'])){
 
     <link rel="stylesheet" type="text/css" href="./styles.css" />
     <title>
-        Προσθήκη Νέας Εργασίας
+    <?php if(isset($type) && strcmp($type, $edit) == 0){ echo "Επεξεργασία Εργασίας";} else{echo "Προσθήκη Νέας Εργασίας";}?>
     </title>
 </head>
 
 <body>
 
     <div class="page">
-        <h1 class="title-container"> Προσθήκη Εργασίας </h1>
+        <h1 class="title-container"> <?php if(isset($type) && strcmp($type, $edit) == 0){ echo "Επεξεργασία Εργασίας</h1>";} else{echo "Προσθήκη Νέας Εργασίας</h1>";}?>
         <div class="flex-parent-element">
             <div class="flex-child-element subflex first">
                 <ul class="menu">
@@ -96,16 +107,28 @@ if(isset($_POST['addhom'])){
             </div>
             <form class="contact-form" method="post">
                 <label class="form-label"> Τίτλος</label><br>
-                <input class="text-input" type="text" size="50" name="astitle" id="astitle"><br><br>
+                <input class="text-input" type="text" size="50" name="astitle" id="astitle" <?php if(isset($type) && strcmp($type, $edit) == 0){
+                    echo "value=\"$editTitle\"";
+                }
+
+                ?>><br><br>
                 <label class="form-label"> Hμερομηνία Παράδοσης</label><br>
-                <input class="text-input" type="date" size="50" name="expdate" id="expdate"><br><br>
+                <input class="text-input" type="date" size="50" name="expdate" id="expdate" <?php if(isset($type) && strcmp($type, $edit) == 0){
+                    echo "value=\"$editDate\"";
+                }
+
+                ?>><br><br>
                 <label class="form-label"> Στόχοι (διαχωρίστε κάθε στόχο με νέα γραμμή)</label><br>
-                <textarea class="text-input" type="text" size="100" name="goal" id="goal"></textarea><br><br>
+                <textarea class="text-input" type="text" size="100" name="goal" id="goal"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editGoals;}?></textarea><br><br>
                 <label class="form-label"> Παραδοτέα (διαχωρίστε κάθε παραδοτέο με νέα γραμμή)</label><br>
-                <textarea class="text-input" type="text" size="100" name="deliverable" id="deliverable"></textarea><br><br>
+                <textarea class="text-input" type="text" size="100" name="deliverable" id="deliverable"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDeliverables;}?></textarea><br><br>
                 <label class="form-label"> Εκφώνηση (εισάγετε τον σύνδεσμο ή το path του αρχείου της εργασίας)</label><br>
                 <input class="text-input" type="text" size="50" name="doc" id="doc"><br><br>
-                <button class="send-button" type="addhom" id="addhom" name="addhom">Προσθήκη Εργασίας</button>
+                 <?php if (isset($type) && strcmp($type, $edit) == 0) {
+                        echo "<button class=\"send-button\" type=\"editdoc\" id=\"editdoc\" required name=\"editdoc\">Επεξεργασία Εργασίας</button>";
+                    } else {
+                        echo "<button class=\"send-button\" type=\"adddoc\" id=\"adddoc\" required name=\"adddoc\">Προσθήκη Νέας Εργασίας</button>";
+                    }?>
             </form><br>
         </div>
     </div>
