@@ -6,7 +6,7 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
 //$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 mysqli_set_charset($db, "utf8");
 ?>
-
+ 
 <html>
 
 <head>
@@ -55,7 +55,7 @@ mysqli_set_charset($db, "utf8");
                         echo  $row[1]."</p>";
                         echo "<p class=\"announcement-subtitle\"> <b>Επώνυμο:</b> ";
                         echo  $row[2]."</p>";
-                        echo "<p class=\"announcement-subtitle\"> <b>Username:</b> ";
+                        echo "<p class=\"announcement-subtitle\"> <b>Email:</b> ";
                         echo  $row[3]."</p>";
                         echo "<p class=\"announcement-subtitle\"> <b>Password:</b> ";
                         echo  $row[4]."</p>";

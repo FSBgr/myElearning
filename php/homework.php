@@ -38,8 +38,7 @@ mysqli_set_charset($db, "utf8");
                 </ul>
             </div>
             <?php
-            $allGoals = "";
-            $allDeliverables = "";
+
             echo "<div class=\"flex-child-element second text-div withborder\">";
             if ($_SESSION['role']) {
                 echo "<a href=\"addhomework.php\" class=\"button\">Προσθήκη Νέας Εργασίας</a><br></p></li>";
@@ -47,6 +46,8 @@ mysqli_set_charset($db, "utf8");
             $fetch_assignment_ids = "SELECT id FROM assignment ORDER BY expdate DESC";
             $assignment_ids = mysqli_query($db, $fetch_assignment_ids);
             while ($row = mysqli_fetch_row($assignment_ids)) {
+                $allGoals = "";
+                $allDeliverables = "";
                 echo "<ul class=\"withborder\" style=\"list-style: none\"> <li class=\"announcement-container\">
                         <h2 class=\"heading2\"> Εργασία " . implode($row) . "</h2>";
 
@@ -92,7 +93,7 @@ mysqli_set_charset($db, "utf8");
                     $tempGoals = str_replace(' ', '_', $allGoals);
                     $tempdel = str_replace(' ', '_', $allDeliverables);
                     $temptitle = str_replace(' ', '_', $title);
-                    $del = 'addhomework.php?type=edit&id=' . implode($row) . '&date=' . implode($date) . '&title=' . $temptitle . '&goals=' . $tempGoals . '&deliverables=' . $tempdel.'&source='.$source;
+                    $del = 'addhomework.php?type=edit&id=' . implode($row) . '&date=' . implode($date) . '&title=' . $temptitle . '&goals=' . $tempGoals . '&deliverables=' . $tempdel . '&source=' . $source;
                     echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                 }
                 echo "</li> </ul>";

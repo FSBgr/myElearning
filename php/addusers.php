@@ -11,15 +11,19 @@ if(isset($_POST['adduser'])){
     $lastname = mysqli_real_escape_string($db, $_POST['lastname']);
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $pwd = mysqli_real_escape_string($db, $_POST['pwd']);
-    if(isset($_POST['isTutor'])){
-        $tutor = true;
+    if(strcmp("Tutor",$_POST['isTutor'])==0){
+        $tutor = TRUE;
     } else {
-        $tutor = false;
+        $tutor = FALSE;
     }
-
-    $query = "INSERT INTO account (name,lastname, loginame, password, isTutor) VALUES ('$name', '$lastname', '$username', '$pwd', '$tutor')";
+    /*if(isset($_POST['isTutor'])){
+        $tutor = 1;
+    } else {
+        $tutor = 0;
+    }*/
+    $query = "INSERT INTO account (name, lastname, loginame, password, isTutor) VALUES ('$name', '$lastname', '$username', '$pwd', '$tutor')";
     $results = mysqli_query($db, $query);
-    header('location: index.php');
+    header('location: viewusers.php');
 }
 
 if (!empty($_GET)) {
@@ -39,9 +43,9 @@ if (isset($_POST['editann'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
     $pwd = mysqli_real_escape_string($db, $_POST['pwd']);
     if(isset($_POST['isTutor'])){
-        $tutor = true;
+        $tutor = TRUE;
     } else {
-        $tutor = false;
+        $tutor = FALSE;
     }
 
     $query = "UPDATE account SET name='$name', lastname='$lastname', loginame='$loginame', password='$pwd', isTutor='$tutor' WHERE id='$userid' ";
@@ -98,7 +102,7 @@ if (isset($_POST['editann'])) {
                 }
 
                 ?>><br><br>
-                <label class="form-label"> Username</label><br>
+                <label class="form-label"> Email</label><br>
                 <input class="text-input" type="text" size="50" required name="username" id="username" <?php if(isset($type) && strcmp($type, $edit) == 0){
                     echo "value=\"$loginame\"";
                 }
@@ -110,21 +114,21 @@ if (isset($_POST['editann'])) {
                 }
 
                 ?>><br><br>
-                <input type="radio" id="isTutor" name="isTutor" value="tutor" <?php if(isset($type) && strcmp($type, $edit)  == 0 && $isTutor){
+                <input type="radio" id="isTutor" name="isTutor" value="Tutor"<?php if(isset($type) && strcmp($type, $edit)  == 0 && $isTutor){
                     echo "checked";
                 }
 
                 ?>>
                 <label class="form-label">Καθηγητής</label><br><br>
-                <input type="radio" id="isStudent" name="isTutor" value="student" <?php if(isset($type) && strcmp($type, $edit)  == 0 && !$isTutor){
+                <input type="radio" id="isStudent" name="isTutor" value="student"<?php if(isset($type) && strcmp($type, $edit)  == 0 && !$isTutor){
                     echo "checked";
                 }?>>
                 <label class="form-label">Μαθητής</label><br><br>
                 <?php
                 if (isset($type) && strcmp($type, $edit) == 0) {
-                    echo "<button class=\"send-button\" type=\"editann\" id=\"editann\" required name=\"editann\">Επεξεργασία Χρήστη</button>";
+                    echo "<button class=\"send-button\" type=\"edituser\" id=\"edituser\" required name=\"edituser\">Επεξεργασία Χρήστη</button>";
                 } else {
-                    echo "<button class=\"send-button\" type=\"addann\" id=\"addann\" required name=\"addann\">Προσθήκη Χρήστη</button>";
+                    echo "<button class=\"send-button\" type=\"adduser\" id=\"adduser\" required name=\"adduser\">Προσθήκη Χρήστη</button>";
                 }
                 ?>
 
