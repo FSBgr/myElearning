@@ -92,7 +92,7 @@ mysqli_set_charset($db, "utf8");
                     $tempGoals = str_replace(' ', '_', $allGoals);
                     $tempdel = str_replace(' ', '_', $allDeliverables);
                     $temptitle = str_replace(' ', '_', $title);
-                    $del = 'addhomework.php?type=edit&id=' . implode($row) . '&date=' . implode($date) . '&title=' . $temptitle . '&goals=' . $tempGoals . '&deliverables=' . $tempdel;
+                    $del = 'addhomework.php?type=edit&id=' . implode($row) . '&date=' . implode($date) . '&title=' . $temptitle . '&goals=' . $tempGoals . '&deliverables=' . $tempdel.'&source='.$source;
                     echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                 }
                 echo "</li> </ul>";

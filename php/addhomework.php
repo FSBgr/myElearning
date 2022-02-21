@@ -69,9 +69,13 @@ if (!empty($_GET)) {
     $type = $_GET['type'];
     $editId = $_GET['id'];
     $editTitle = $_GET['title'];
+    $editTitle = str_replace("_"," ", $editTitle);
     $editGoals = $_GET['goals'];
+    $editGoals = str_replace("_","\n",$editGoals);
     $editDeliverables = $_GET['deliverables'];
+    $editDeliverables = str_replace("_","\n",$editDeliverables);
     $editDate = $_GET['date'];
+    $editSource = $_GET['source'];
 }
 $edit = "edit";
 
@@ -121,11 +125,15 @@ $edit = "edit";
 
                 ?>><br><br>
                 <label class="form-label"> Στόχοι (διαχωρίστε κάθε στόχο με νέα γραμμή)</label><br>
-                <textarea class="text-input" type="text" size="100" name="goal" id="goal"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editGoals;}?></textarea><br><br>
+                <textarea rows="5" cols="40" name="goal" id="goal"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editGoals;}?></textarea><br><br>
                 <label class="form-label"> Παραδοτέα (διαχωρίστε κάθε παραδοτέο με νέα γραμμή)</label><br>
-                <textarea class="text-input" type="text" size="100" name="deliverable" id="deliverable"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDeliverables;}?></textarea><br><br>
+                <textarea rows="5" cols="40" name="deliverable" id="deliverable"><?php if(isset($type) && strcmp($type, $edit) == 0){echo $editDeliverables;}?></textarea><br><br>
                 <label class="form-label"> Εκφώνηση (εισάγετε τον σύνδεσμο ή το path του αρχείου της εργασίας)</label><br>
-                <input class="text-input" type="text" size="50" name="doc" id="doc"><br><br>
+                <input class="text-input" type="text" size="50" name="doc" id="doc" <?php if(isset($type) && strcmp($type, $edit) == 0){
+                    echo "value=\"$editSource\"";
+                }
+
+                ?>><br><br>
                  <?php if (isset($type) && strcmp($type, $edit) == 0) {
                         echo "<button class=\"send-button\" type=\"editdoc\" id=\"editdoc\" required name=\"editdoc\">Επεξεργασία Εργασίας</button>";
                     } else {

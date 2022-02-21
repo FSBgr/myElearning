@@ -35,7 +35,9 @@ if (!empty($_GET)) {
     $type = $_GET['type'];
     $editId = $_GET['id'];
     $editTitle = $_GET['title'];
+    $editTitle = str_replace("_"," ", $editTitle);
     $editDesc = $_GET['description'];
+    $editDesc = str_replace("_"," ", $editDesc);
     $editPath = $_GET['path'];
 }
 $edit = "edit";
