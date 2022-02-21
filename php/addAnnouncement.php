@@ -4,6 +4,7 @@
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 //$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
+mysqli_set_charset($db, "utf8");
 
 if (isset($_POST['addann'])) {
     $date = mysqli_real_escape_string($db, $_POST['date']);

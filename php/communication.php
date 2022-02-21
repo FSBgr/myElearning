@@ -9,6 +9,7 @@ if(!isset($_SESSION['username'])){
 
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
 //$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
+mysqli_set_charset($db, "utf8");
 
 $sql = "SELECT * from emailaddresses";
 if ($result = mysqli_query($db, $sql)) {
