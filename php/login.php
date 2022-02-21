@@ -3,7 +3,7 @@
 <?php
 session_start();
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
-
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 
 if (isset($_POST['submit'])) {
     $username = mysqli_real_escape_string($db, $_POST['username']);
@@ -63,11 +63,11 @@ if (isset($_POST['logout'])) {
                     echo "<form class=\"contact-form\" method=\"post\">
                     <button class=\"send-button\" type=\"logout\" id=\"logout\" required name=\"logout\">Logout</button><br> </form><br>";
                 } else{
-                    echo "<form class=\"contact-form\" method=\"post\"> <label class=\"form-label\"> Username:</label><br>
+                    echo "<div class=\"announcement-container\"> <form class=\"contact-form\" method=\"post\"> <label class=\"form-label\"> Username:</label><br>
                     <input class=\"text-input\" type=\"text\" size=\"50\" required name=\"username\" id=\"username\"><br><br>
                     <label class=\"form-label\"> Password:</label><br>
                     <input class=\"text-input\" type=\"text\" size=\"100\" required name=\"pwd\" id=\"pwd\"><br><br>
-                    <button class=\"send-button\" type=\"submit\" id=\"submit\" required name=\"submit\">Log-in</button></form><br>";
+                    <button class=\"send-button\" type=\"submit\" id=\"submit\" required name=\"submit\">Log-in</button></form></div><br>";
                 }?>
 
             

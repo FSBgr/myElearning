@@ -1,7 +1,12 @@
 <!DOCTYPE html>
-<?php session_start();
-$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
+<?php
+session_start();
 
+if (!isset($_SESSION['username'])) {
+    header('Location: ./login.php');
+}
+$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 ?>
 <html>
 
@@ -33,9 +38,9 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
             </div>
             <?php
             $allGoals = "";
-            $allDeliverables="";
-            echo "<div class=\"flex-child-element second text-div withborder\">"; 
-            if($_SESSION['role']){
+            $allDeliverables = "";
+            echo "<div class=\"flex-child-element second text-div withborder\">";
+            if ($_SESSION['role']) {
                 echo "<a href=\"addhomework.php\" class=\"button\">Προσθήκη Νέας Εργασίας</a><br></p></li>";
             }
             $fetch_assignment_ids = "SELECT id FROM assignment ORDER BY expdate DESC";
@@ -43,15 +48,15 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
             while ($row = mysqli_fetch_row($assignment_ids)) {
                 echo "<ul class=\"withborder\" style=\"list-style: none\"> <li class=\"announcement-container\">
                         <h2 class=\"heading2\"> Εργασία " . implode($row) . "</h2>";
-                        
-                        echo "<br>
+
+                echo "<br>
                         <p class=\"list-text\"> <em><b>Στόχοι: </b></em></p> <br>
                         <ol>";
                 $getGoals = "SELECT DISTINCT goal.description FROM hasgoal INNER JOIN goal ON goal.id = hasgoal.goalId INNER JOIN assignment ON hasgoal.assignmentId = assignment.id WHERE assignmentId=" . implode($row);
                 $goals = mysqli_query($db, $getGoals);
                 while ($rr = mysqli_fetch_row($goals)) {
                     echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
-                    $allGoals = $allGoals.implode($rr);
+                    $allGoals = $allGoals . implode($rr);
                 }
                 echo "</ol>";
 
@@ -68,27 +73,27 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                 $deliverables = mysqli_query($db, $get_deliverables);
                 while ($rr = mysqli_fetch_row($deliverables)) {
                     echo "<li class=\"project-goal\">" . implode($rr) . "</li> <br>";
-                    $allDeliverables = $allDeliverables." ".implode($rr);
+                    $allDeliverables = $allDeliverables . " " . implode($rr);
                 }
                 echo "</ol>";
 
                 $get_date = "SELECT expdate FROM assignment WHERE id=" . implode($row);
                 $date = mysqli_fetch_row(mysqli_query($db, $get_date));
 
-                $query = "SELECT title FROM assignment WHERE id=". implode($row);
+                $query = "SELECT title FROM assignment WHERE id=" . implode($row);
                 $result = mysqli_fetch_row(mysqli_query($db, $query));
                 $title = implode($result);
                 echo "<p class=\"list-text\"><span class=\"redText\"> <em><b>Ημερομηνία Παράδοσης </b></em></span>" .
                     implode($date) . "</p>";
-                    if ($_SESSION['role']) {
-                        $del = 'deletehomework.php?id='.implode($row);
-                        echo "<br> <a href= $del> Διαγραφή </a>";
-                        $tempGoals = str_replace(' ', '_', $allGoals);
-                        $tempdel= str_replace(' ', '_', $allDeliverables);
-                        $temptitle = str_replace(' ', '_', $title);
-                        $del = 'addhomework.php?type=edit&id='.implode($row).'&date='.implode($date).'&title='.$temptitle.'&goals='.$tempGoals.'&deliverables='.$tempdel;
-                        echo "<br> <a href= $del> Επεξεργασία </a> <br>";
-                    }
+                if ($_SESSION['role']) {
+                    $del = 'deletehomework.php?id=' . implode($row);
+                    echo "<br> <a href= $del> Διαγραφή </a>";
+                    $tempGoals = str_replace(' ', '_', $allGoals);
+                    $tempdel = str_replace(' ', '_', $allDeliverables);
+                    $temptitle = str_replace(' ', '_', $title);
+                    $del = 'addhomework.php?type=edit&id=' . implode($row) . '&date=' . implode($date) . '&title=' . $temptitle . '&goals=' . $tempGoals . '&deliverables=' . $tempdel;
+                    echo "<br> <a href= $del> Επεξεργασία </a> <br>";
+                }
                 echo "</li> </ul>";
             }
             ?>

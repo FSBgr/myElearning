@@ -6,7 +6,7 @@ if(!isset($_SESSION['username'])){
     header('Location: ./login.php');
 }
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
-
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 ?>
 
 <html>
@@ -51,9 +51,6 @@ $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could 
                 <img class="image" src="./images/auth.png" alt="Auth logo">
 
                 <?php if($_SESSION['role']){ 
-                    /*echo "<a href=\"editusers.php\" class=\"button\">Επεξεργασία Χρηστών</a><br>";
-                    echo "<a href=\"deleteusers.php\" class=\"button\">Διαγραφή Χρηστών</a><br>";
-                    echo "<a href=\"addusers.php\" class=\"button\">Προσθήκη Χρηστών</a><br>";*/
                     echo "<a href=\"viewusers.php\" class=\"button\">Προβολή Χρηστών</a><br>";
                 }
                     ?>

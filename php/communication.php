@@ -3,8 +3,12 @@
 <?php
 session_start();
 
-//connecting to db
-$db = mysqli_connect('localhost', 'root', '', 'student3350partB') or die("could not connect to db");
+if(!isset($_SESSION['username'])){
+    header('Location: ./login.php');
+}
+
+$db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 
 $sql = "SELECT * from emailaddresses";
 if ($result = mysqli_query($db, $sql)) {

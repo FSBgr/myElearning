@@ -2,8 +2,13 @@
 <?php
 session_start();
 
+if(!isset($_SESSION['username'])){
+    header('Location: ./login.php');
+}
+
 //connecting to db
 $db = mysqli_connect('localhost', 'root', '', 'student3350partb') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
 
 $sql = "SELECT * from announcement";
 if ($result = mysqli_query($db, $sql)) {

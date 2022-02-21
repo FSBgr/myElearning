@@ -319,3 +319,9 @@ textarea {
         width: 100%;
     }
 }
+
+.login{
+    display: flex;
+height: 150px;
+align-items: center;
+}
