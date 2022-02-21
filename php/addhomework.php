@@ -53,7 +53,7 @@ if(isset($_POST['addhom'])){
     date_default_timezone_set('Greece/Athens'); 
     $annhomeworkdate = date("Y-m-d");
     $annhomeworksubject = "Ανάρτηση Εργασίας";
-    $annhomeworkbody = "Έχει ανακοινωθεί η ".$newid."η εργασία στη Σελίδα <a href=\"homework.php\">Εργασίες</a>";
+    $annhomeworkbody = "Έχει ανακοινωθεί η ".$newid."η εργασία στη Σελίδα Εργασίες με ημερομηνία".$annhomeworkdate;
 
 
     $query = "INSERT INTO announcement (date, subject, text) VALUES ('$annhomeworkdate', '$annhomeworksubject', '$annhomeworkbody')";
