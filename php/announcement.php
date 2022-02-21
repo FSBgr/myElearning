@@ -48,7 +48,7 @@ if ($result = mysqli_query($db, $sql)) {
             </div>
             <div class="flex-child-element second text-div">
             <?php if ($_SESSION['role']) {
-            echo "<a href=\"addannouncement.php\" class=\"button\">Προσθήκη Νέας Ανακοίνωσης</a><br></p></li>";
+            echo "<a href=\"addAnnouncement.php\" class=\"button\">Προσθήκη Νέας Ανακοίνωσης</a><br></p></li>";
         }
         ?>
                 <ul>

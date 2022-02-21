@@ -68,8 +68,11 @@ if (!empty($_GET)) {
     $type = $_GET['type'];
     $editId = $_GET['id'];
     $editTitle = $_GET['title'];
+    $editTitle = str_replace("_"," ", $editTitle);
     $editGoals = $_GET['goals'];
+    $editGoals = str_replace("_","\n", $editGoals);
     $editDeliverables = $_GET['deliverables'];
+    $editDeliverables = str_replace("_","\n", $editDeliverables);
     $editDate = $_GET['date'];
 }
 $edit = "edit";
