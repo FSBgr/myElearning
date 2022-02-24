@@ -7,8 +7,8 @@ if(!isset($_SESSION['username'])){
 }
 
 //connecting to db
-$db = mysqli_connect('localhost', 'christpc', 'Ui8sx14$', 'student3350partb') or die("could not connect to db");
-//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'christpc', 'Ui8sx14$', 'student3350') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350') or die("could not connect to db");
 mysqli_set_charset($db, "utf8");
 
 $sql = "SELECT * from announcement";
@@ -43,7 +43,7 @@ if ($result = mysqli_query($db, $sql)) {
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
-                    <li> <a href="./login.php" class="button">Logout</a></li>
+                    <li> <a href="./login.php" class="button">Αποσύνδεση</a></li>
                 </ul>
             </div>
             <div class="flex-child-element second text-div">

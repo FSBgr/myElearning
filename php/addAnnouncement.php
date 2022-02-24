@@ -2,8 +2,8 @@
 
 <?php
 session_start();
-$db = mysqli_connect('localhost', 'christpc', 'Ui8sx14$', 'student3350partb') or die("could not connect to db");
-//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'christpc', 'Ui8sx14$', 'student3350') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350') or die("could not connect to db");
 mysqli_set_charset($db, "utf8");
 
 if (isset($_POST['addann'])) {
@@ -67,7 +67,7 @@ if (isset($_POST['editann'])) {
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
-                    <li> <a href="./login.php" class="button">Logout</a></li>
+                    <li> <a href="./login.php" class="button">Αποσύνδεση</a></li>
                 </ul>
             </div>
             <form class="contact-form" method="post">

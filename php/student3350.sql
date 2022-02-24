@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2022 at 01:44 PM
+-- Generation Time: Feb 24, 2022 at 02:22 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `student3350partb`
+-- Database: `student3350`
 --
 
 -- --------------------------------------------------------
@@ -41,8 +41,9 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`id`, `name`, `lastname`, `loginame`, `password`, `isTutor`) VALUES
-(1, 'Christos', 'Christidis', 'admin', 'admin', 1),
-(2, 'pepegas', 'pepegidis', 'student', 'student', 0);
+(1, 'Christos', 'Christidis', 'admin@admin.admin', 'admin', 1),
+(7, 'Michael', 'Jordan', 'mj@mj.mj', 'mj', 0),
+(8, 'Tyler', 'One', 't1@t1.t1', 't1', 0);
 
 -- --------------------------------------------------------
 
@@ -62,9 +63,8 @@ CREATE TABLE `announcement` (
 --
 
 INSERT INTO `announcement` (`id`, `date`, `subject`, `text`) VALUES
-(9, '2022-01-26', 'LOREM IPSUM', 'jhbfgngfjhbjfntjngjnfg'),
-(10, '2022-02-10', 'LOREM IPSUM', 'tatata'),
-(13, '2022-02-03', 'testdrive', 'tesdroce');
+(18, '2022-02-18', 'Εργασία OWL ', ' Vivamus lobortis tincidunt risus ut consectetur. Nulla facilisi. Donec consequat fringilla cursus. Nullam eleifend convallis iaculis. Fusce gravida metus et sagittis facilisis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis tempus, sapien quis blandit elementum, lorem augue commodo mauris, quis semper ligula sem eu urna. Duis in sapien rhoncus mauris ultricies sagittis ut quis risus. Phasellus suscipit ultricies quam, vitae bibendum risus tincidunt sed. Nullam sagittis interdum vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent nec pretium orci. Proin id justo sit amet velit gravida varius a at orci. Aliquam vel ipsum nec felis sodales bibendum et a orci. Curabitur ut sem laoreet, commodo enim sit amet, dignissim sapien. Morbi feugiat luctus scelerisque.'),
+(19, '2022-02-21', 'Ανάρτηση Εργασίας', 'Έχει ανακοινωθεί η 4η εργασία στη Σελίδα <a href=\"homework.php\">Εργασίες</a>');
 
 -- --------------------------------------------------------
 
@@ -85,8 +85,7 @@ CREATE TABLE `assignment` (
 
 INSERT INTO `assignment` (`id`, `expdate`, `title`, `source`) VALUES
 (2, '2022-02-22', 'Machine Learning', 'https://google.com'),
-(3, '2022-02-26', 'Ανάπτυξη Διαδικτυακού Πληροφορικού Συστήματος', 'https://amazon.com'),
-(4, '2022-02-05', 'TEST HOMEWORK', 'https://google.com');
+(3, '2022-02-26', 'Ανάπτυξη Διαδικτυακού Πληροφορικού Συστήματος', 'https://amazon.com');
 
 -- --------------------------------------------------------
 
@@ -131,7 +130,13 @@ INSERT INTO `deliverable` (`id`, `description`) VALUES
 (25, 'pipipipi'),
 (26, 'Sumoething\r'),
 (27, 'Totally\r'),
-(28, 'Irrelevant');
+(28, 'Irrelevant'),
+(29, 'ay\r'),
+(30, 'lmao'),
+(31, 'dghfhfghdfgh'),
+(32, 'Fusce gravida metus et sagittis facilisis.\r'),
+(33, 'Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. \r'),
+(34, 'Duis tempus, sapien quis blandit elementum, lorem augue commodo mauris, quis semper ligula sem eu urna.');
 
 -- --------------------------------------------------------
 
@@ -151,8 +156,7 @@ CREATE TABLE `document` (
 --
 
 INSERT INTO `document` (`id`, `title`, `description`, `source`) VALUES
-(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html'),
-(8, 'Me_geia_mas', 'fdvbgnjhgdf', './uploads/ΕΡΓΑΣΙΑ-Δ2-ΧΡΙΣΤΙΔΗΣ-3350 (1).docx');
+(1, 'Τεχνητή Νοημοσύνη: Εισαγωγή', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus gravida eget libero id tristique. Nunc congue fringilla tellus. In in lacus purus. Aliquam congue scelerisque augue et gravida. Fusce sagittis blandit arcu vitae eleifend. Cras et ante non massa accumsan suscipit sed vitae lorem. Mauris tellus felis, malesuada eu lectus nec, varius iaculis arcu. Nullam nec nunc sagittis, consequat metus et, placerat risus. Nulla facilisi. Donec elementum sapien ut faucibus aliquet. Maecenas pulvinar ornare tempus. Quisque consectetur facilisis egestas. Sed quis lacus ac mauris mattis luctus. Sed nec erat malesuada, pulvinar felis viverra, efficitur lacus. Mauris pellentesque tellus nisi, quis gravida felis gravida id.\r\n\r\nNam mattis nisi et ante pulvinar porta. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a lacus et dui bibendum congue. Mauris non nulla imperdiet, tempus ipsum a, posuere diam. Vestibulum velit ipsum, porttitor eget venenatis id, convallis pulvinar sem. Proin ut bibendum nibh, a tristique ex. Praesent condimentum vehicula augue, ut vehicula est. Cras ligula erat, mollis quis tempor eget, commodo ac diam. Fusce faucibus arcu at eros lacinia vestibulum. Aliquam scelerisque sodales enim eget scelerisque. Morbi eu ligula libero. Nunc eu nisi ut nisl pretium aliquet. Cras vestibulum iaculis mi, eu finibus risus aliquam non. Quisque ac consectetur libero, eu lobortis mauris.\r\n\r\nDuis gravida turpis diam, vitae egestas diam efficitur in. Mauris interdum velit nec malesuada molestie. Cras ullamcorper bibendum rutrum. Sed a mattis elit. Aenean pretium vitae erat in molestie. Praesent commodo sit amet lacus non placerat. Maecenas quis varius tortor. Etiam nulla metus, ornare et dapibus eu, accumsan nec nisl. Aliquam ac volutpat tortor, et facilisis enim. Morbi ornare eros blandit, scelerisque sapien vitae, suscipit leo.', 'https://www.lipsum.com/feed/html');
 
 -- --------------------------------------------------------
 
@@ -262,7 +266,15 @@ INSERT INTO `goal` (`id`, `description`) VALUES
 (44, 'popopo'),
 (45, 'To check\r'),
 (46, 'if it\r'),
-(47, 'works');
+(47, 'works'),
+(48, 'no\r'),
+(49, 'reasojn\r'),
+(50, 'at \r'),
+(51, 'all'),
+(52, 'dghjfgdhfgh'),
+(53, 'Vivamus lobortis tincidunt risus ut consectetur.\r'),
+(54, 'Nulla facilisi. Donec consequat fringilla cursus.\r'),
+(55, 'Nullam eleifend convallis iaculis.');
 
 -- --------------------------------------------------------
 
@@ -285,10 +297,7 @@ INSERT INTO `hasdeliverable` (`id`, `assignmentId`, `deliverableId`) VALUES
 (2, 2, 2),
 (3, 2, 3),
 (4, 3, 4),
-(5, 3, 2),
-(21, 4, 26),
-(22, 4, 27),
-(23, 4, 28);
+(5, 3, 2);
 
 -- --------------------------------------------------------
 
@@ -312,10 +321,7 @@ INSERT INTO `hasgoal` (`id`, `assignmentId`, `goalId`) VALUES
 (3, 2, 3),
 (4, 3, 4),
 (5, 3, 5),
-(6, 3, 6),
-(15, 4, 45),
-(16, 4, 46),
-(17, 4, 47);
+(6, 3, 6);
 
 --
 -- Indexes for dumped tables
@@ -389,13 +395,13 @@ ALTER TABLE `hasgoal`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `announcement`
 --
 ALTER TABLE `announcement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `assignment`
@@ -407,13 +413,13 @@ ALTER TABLE `assignment`
 -- AUTO_INCREMENT for table `deliverable`
 --
 ALTER TABLE `deliverable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `document`
 --
 ALTER TABLE `document`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `email`
@@ -431,19 +437,19 @@ ALTER TABLE `emailaddresses`
 -- AUTO_INCREMENT for table `goal`
 --
 ALTER TABLE `goal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `hasdeliverable`
 --
 ALTER TABLE `hasdeliverable`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `hasgoal`
 --
 ALTER TABLE `hasgoal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

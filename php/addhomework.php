@@ -2,8 +2,9 @@
 
 <?php
 session_start();
-$db = mysqli_connect('localhost', 'christpc', 'Ui8sx14$', 'student3350partb') or die("could not connect to db");
-//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350partB') or die("could not connect to db");
+$db = mysqli_connect('localhost', 'root', '', 'student3350') or die("could not connect to db");
+//$db = mysqli_connect('webpagesdb.it.auth.gr:3306', 'christpc', 'Ui8sx14$', 'student3350') or die("could not connect to db");
+mysqli_set_charset($db, "utf8");
 
 if(isset($_POST['addhom'])){
     $expdate = mysqli_real_escape_string($db, $_POST['expdate']);
@@ -52,11 +53,11 @@ if(isset($_POST['addhom'])){
 
     date_default_timezone_set('Greece/Athens'); 
     $annhomeworkdate = date("Y-m-d");
-    $annhomeworksubject = "Ανάρτηση Εργασίας";
-    $annhomeworkbody = "Έχει ανακοινωθεί η ".$newid."η εργασία στη Σελίδα Εργασίες με ημερομηνία".$annhomeworkdate;
+    $annhomeworksubject = "Ανάρτηση Εργασίας ".$newid;
+    $annhomeworkbody = "Η ημερομηνία παράδοσης της εργασίας είναι ".$annhomeworkdate;
 
 
-    $query = "INSERT INTO announcement (date, subject, text) VALUES ('$annhomeworkdate', '$annhomeworksubject', '$annhomeworkbody')";
+    $query = "INSERT INTO announcement (date, subject, text) VALUES ('$expdate', '$annhomeworksubject', '$annhomeworkbody')";
     $result = mysqli_query($db, $query);
     
     header('location: homework.php');
@@ -106,7 +107,7 @@ $edit = "edit";
                     <li> <a href="./communication.php" class="button">Επικοινωνία</a></li>
                     <li> <a href="./documents.php" class="button">Έγγραφα Μαθήματος</a></li>
                     <li> <a href="./homework.php" class="button">Εργασίες</a></li>
-                    <li> <a href="./login.php" class="button">Logout</a></li>
+                    <li> <a href="./login.php" class="button">Αποσύνδεση</a></li>
                 </ul>
             </div>
             <form class="contact-form" method="post">

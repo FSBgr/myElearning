@@ -145,11 +145,37 @@ ul.menu {
     margin-top: 10px;
 }
 
+.logoutbutton{
+    font-size: medium;
+}
+
+.logintitle{
+    margin-top: 2%;
+    margin-left: 3%;
+}
+
 .announcement-container {
-    /*width: 800px;*/
     width: auto;
     height: auto;
     margin-bottom: 30px;
+}
+.loginarea{
+    width: auto;
+    margin: auto;
+    margin-top: 5%;
+}
+
+.logincenter{
+    display: inline;
+    float: none;
+    margin-left: 42%;
+}
+
+.logoutcenter{
+    display: inline;
+    float: none;
+    margin-left: 28%;
+    margin-top: 12%;
 }
 
 .list-text {
