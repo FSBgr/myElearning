@@ -70,13 +70,13 @@ if ($result = mysqli_query($db, $sql)) {
                             echo "<br> <a href= $del> Διαγραφή </a>";
                             $tempsub = str_replace(' ', '_', $subject);
                             $temptext = str_replace(' ', '_', $text);
-                            if(str_contains($temptext,"<a")){
+                            /*if(str_contains($temptext,"<a")){
                                 $temptext = str_replace("<a","_",$temptext);    //quick parsing error fix
                                 $temptext = str_replace("</a>","",$temptext);
                                 $temptext = str_replace("Εργασίες","",$temptext);
                                 $temptext = str_replace(">","",$temptext);
                                 
-                            }
+                            }*/
                             $del = "addannouncement.php?type=edit&id=".$id."&date=".$date."&subject=".$tempsub."&text=".$temptext;
                             echo "<br> <a href= $del> Επεξεργασία </a> <br>";
                         }
